@@ -19,7 +19,7 @@
 ]]></content>
   </entry>
   <entry>
-    <title>how to deploy blog</title>
+    <title>How to deploy blog</title>
     <url>/2024/04/20/how-to-deploy-blog/</url>
     <content><![CDATA[<h2 id="安装Git和Nodejs"><a href="#安装Git和Nodejs" class="headerlink" title="安装Git和Nodejs"></a>安装Git和Nodejs</h2><p>node -v #查看node版本<br>npm -v #查看npm版本<br>npm install -g cnpm –registry&#x3D;<a href="http://registry.npm.taobao.org/">http://registry.npm.taobao.org</a> #安装淘宝的cnpm 管理器<br>cnpm -v #查看cnpm版本<br>cnpm install -g hexo-cli #安装hexo框架<br>hexo -v #查看hexo版本</p>
 <hr>
