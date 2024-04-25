@@ -3,7 +3,7 @@
   <entry>
     <title>Common Linux commands</title>
     <url>/2024/04/25/Common-Linux-commands/</url>
-    <content><![CDATA[<h2 id="Linux-常用命令"><a href="#Linux-常用命令" class="headerlink" title="Linux 常用命令"></a>Linux 常用命令</h2><ul>
+    <content><![CDATA[<h2 id="Linux-常用命令"><a href="#Linux-常用命令" class="headerlink" title="Linux 常用命令"></a><font color="#3CAA78">Linux 常用命令</font></h2><ul>
 <li>用户切换</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 切换到超级用户</span><br><span class="line">gec@ubuntu:~$  sudo -s        </span><br><span class="line">[sudo] password for gec:      </span><br><span class="line">root@ubuntu:~#    			 // root表示超级用户名字  #表示超级用户权限标志</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 切换到普通用户</span><br><span class="line">root@ubuntu:~#  su  xxx      // 第一种方式  xxx指的是系统中用户的名称</span><br><span class="line">gec@ubuntu:~$</span><br><span class="line"></span><br><span class="line">root@ubuntu:~#  exit         // 第二种方式 </span><br><span class="line">exit</span><br></pre></td></tr></table></figure>
@@ -45,7 +45,7 @@
 <ul>
 <li>复制文件</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cp  [选项]  源文件(被复制文件)  目标路径</span><br><span class="line"></span><br><span class="line">cp -i     // 询问，如果目标文件已经存在，则会询问是否覆盖</span><br><span class="line">cp -r     // 递归复制，用于复制目录</span><br><span class="line">cp -u     // 若目标文件和源文件有差异，则可以更新目标文件，可用于对文件的升级和备用</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cp  [选项]  源文件(被复制文件)  目标路径</span><br><span class="line"></span><br><span class="line">cp -i     // 询问，如果目标文件已经存在，则会询问是否覆盖</span><br><span class="line">cp -r     // 递归复制，用于复制目录</span><br><span class="line">cp -u     // 若目标文件和源文件有差异，则可以更新目标文件，可用于对文件的升级和备用</span><br></pre></td></tr></table></figure>
 
 <hr>
 <ul>
@@ -63,7 +63,7 @@
 <ul>
 <li>查看文件</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat file.txt   // 显示文本文件内容</span><br><span class="line">cat -n a.c     // 显示文本文件内容（并显示行号）</span><br><span class="line">cat -A a.c     // 显示文本文件内容（含不可见字符）</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat file.txt   // 显示文本文件内容</span><br><span class="line">cat -n a.c     // 显示文本文件内容（并显示行号）</span><br><span class="line">cat -A a.c     // 显示文本文件内容（含不可见字符）</span><br></pre></td></tr></table></figure>
 
 <hr>
 <ul>
@@ -75,7 +75,13 @@
 <ul>
 <li>查看进程</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ps -ef                      // 显示所有命令，连带命令行</span><br><span class="line">ps -ef | grep 进程关键字      // 查找指定进程格式， 例子：ps -ef | grep php</span><br><span class="line">ps -A                       // 显示进程信息</span><br><span class="line">ps -u root                  //显示root进程用户信息</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ps -ef                      // 显示所有命令，连带命令行</span><br><span class="line">ps -ef | grep 进程关键字      // 查找指定进程格式， 例子：ps -ef | grep php</span><br><span class="line">ps -A                       // 显示进程信息</span><br><span class="line">ps -u root                  //显示root进程用户信息</span><br></pre></td></tr></table></figure>
+
+<hr>
+<ul>
+<li>压缩解压</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tar  选项  目标文件  源文件 </span><br><span class="line"></span><br><span class="line"> -c：创建一个新的归档文件。</span><br><span class="line"> -x：从归档文件中提取文件。</span><br><span class="line"> -f：指定要处理的归档文件名。     //该选项必须放在所有选项的最后面</span><br><span class="line"></span><br><span class="line"> -z：使用gzip压缩创建tar文件。</span><br><span class="line"> -j：使用bzip2压缩法创建存档文件。</span><br><span class="line"></span><br><span class="line">tar cf a.tar dir/*                        // 将目录dir中的所有文件归档成a.tar</span><br><span class="line">tar tf a.tar                              // 查看归档文件a.tar</span><br><span class="line">tar xf a.tar                              // 释放归档文件a.tar</span><br><span class="line"></span><br><span class="line">gec@ubuntu:~$ tar czf a.tar.gz dir/*      // 将目录dir中的所有文件归档并压缩为gz格式</span><br><span class="line">gec@ubuntu:~$ tar xzf a.tar.gz            // 解压压缩文件a.tar.gz</span><br><span class="line"></span><br><span class="line">gec@ubuntu:~$ tar cjf a.tar.bz2 dir/*     // 将目录dir中的所有文件归档并压缩为bz2格式</span><br><span class="line">gec@ubuntu:~$ tar xjf a.tar.bz2           // 解压压缩文件a.tar.bz2</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -102,35 +108,6 @@
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>How to deploy blog</title>
-    <url>/2024/04/20/how-to-deploy-blog/</url>
-    <content><![CDATA[<h2 id="安装Git和Nodejs"><a href="#安装Git和Nodejs" class="headerlink" title="安装Git和Nodejs"></a>安装Git和Nodejs</h2><p>node -v #查看node版本<br>npm -v #查看npm版本<br>npm install -g cnpm –registry&#x3D;<a href="http://registry.npm.taobao.org/">http://registry.npm.taobao.org</a> #安装淘宝的cnpm 管理器<br>cnpm -v #查看cnpm版本<br>cnpm install -g hexo-cli #安装hexo框架<br>hexo -v #查看hexo版本</p>
-<hr>
-<h2 id="创建hexo博客文件夹"><a href="#创建hexo博客文件夹" class="headerlink" title="创建hexo博客文件夹"></a>创建hexo博客文件夹</h2><p>mkdir blog #创建blog目录<br>cd blog #进入blog目录<br>sudo hexo init #生成博客 初始化博客<br>hexo s #启动本地博客服务<br><a href="http://localhost:4000/">http://localhost:4000/</a> #本地访问地址</p>
-<hr>
-<h2 id="部署到Github"><a href="#部署到Github" class="headerlink" title="部署到Github"></a>部署到Github</h2><p>hexo n “我的第一篇文章” #创建新的文章<br>#返回blog目录<br>hexo clean #清理<br>hexo g #生成<br>#Github创建一个新的仓库 YourGithubName.github.io<br>cnpm install –save hexo-deployer-git #在blog目录下安装git部署插件</p>
-<h2 id="配置-config-yml"><a href="#配置-config-yml" class="headerlink" title="#配置_config.yml "></a>#配置_config.yml </h2><pre><code>#Deployment
-##Docs: https://hexo.io/docs/deployment.html
-deploy:
-type: git
-repo: https://github.com/YourGithubName/YourGithubName.github.io.git
-branch: master
-</code></pre>
-<hr>
-<p>hexo d #部署到Github仓库里<br><a href="https://yourgithubname.github.io/">https://YourGithubName.github.io/</a> #访问这个地址可以查看博客</p>
-<hr>
-<h2 id="修改主题"><a href="#修改主题" class="headerlink" title="修改主题"></a>修改主题</h2><p>git clone <a href="https://github.com/litten/hexo-theme-yilia.git">https://github.com/litten/hexo-theme-yilia.git</a> themes&#x2F;yilia #下载yilia主题到本地</p>
-<p>#修改hexo根目录下的 _config.yml 文件 ： theme: yilia</p>
-<p>hexo c #清理一下<br>hexo g #生成<br>hexo d #部署到远程Github仓库<br><a href="https://yourgithubname.github.io/">https://YourGithubName.github.io/</a> #查看博客</p>
-]]></content>
-      <categories>
-        <category>环境部署</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
   </entry>
   <entry>
     <title>Installation of Ubuntu in VMware</title>
@@ -182,6 +159,35 @@ branch: master
       </categories>
       <tags>
         <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>How to deploy blog</title>
+    <url>/2024/04/20/how-to-deploy-blog/</url>
+    <content><![CDATA[<h2 id="安装Git和Nodejs"><a href="#安装Git和Nodejs" class="headerlink" title="安装Git和Nodejs"></a>安装Git和Nodejs</h2><p>node -v #查看node版本<br>npm -v #查看npm版本<br>npm install -g cnpm –registry&#x3D;<a href="http://registry.npm.taobao.org/">http://registry.npm.taobao.org</a> #安装淘宝的cnpm 管理器<br>cnpm -v #查看cnpm版本<br>cnpm install -g hexo-cli #安装hexo框架<br>hexo -v #查看hexo版本</p>
+<hr>
+<h2 id="创建hexo博客文件夹"><a href="#创建hexo博客文件夹" class="headerlink" title="创建hexo博客文件夹"></a>创建hexo博客文件夹</h2><p>mkdir blog #创建blog目录<br>cd blog #进入blog目录<br>sudo hexo init #生成博客 初始化博客<br>hexo s #启动本地博客服务<br><a href="http://localhost:4000/">http://localhost:4000/</a> #本地访问地址</p>
+<hr>
+<h2 id="部署到Github"><a href="#部署到Github" class="headerlink" title="部署到Github"></a>部署到Github</h2><p>hexo n “我的第一篇文章” #创建新的文章<br>#返回blog目录<br>hexo clean #清理<br>hexo g #生成<br>#Github创建一个新的仓库 YourGithubName.github.io<br>cnpm install –save hexo-deployer-git #在blog目录下安装git部署插件</p>
+<h2 id="配置-config-yml"><a href="#配置-config-yml" class="headerlink" title="#配置_config.yml "></a>#配置_config.yml </h2><pre><code>#Deployment
+##Docs: https://hexo.io/docs/deployment.html
+deploy:
+type: git
+repo: https://github.com/YourGithubName/YourGithubName.github.io.git
+branch: master
+</code></pre>
+<hr>
+<p>hexo d #部署到Github仓库里<br><a href="https://yourgithubname.github.io/">https://YourGithubName.github.io/</a> #访问这个地址可以查看博客</p>
+<hr>
+<h2 id="修改主题"><a href="#修改主题" class="headerlink" title="修改主题"></a>修改主题</h2><p>git clone <a href="https://github.com/litten/hexo-theme-yilia.git">https://github.com/litten/hexo-theme-yilia.git</a> themes&#x2F;yilia #下载yilia主题到本地</p>
+<p>#修改hexo根目录下的 _config.yml 文件 ： theme: yilia</p>
+<p>hexo c #清理一下<br>hexo g #生成<br>hexo d #部署到远程Github仓库<br><a href="https://yourgithubname.github.io/">https://YourGithubName.github.io/</a> #查看博客</p>
+]]></content>
+      <categories>
+        <category>环境部署</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
       </tags>
   </entry>
 </search>
