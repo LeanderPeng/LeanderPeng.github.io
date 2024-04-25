@@ -20,20 +20,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="Linux 常用命令 用户切换  123456789101112&#x2F;&#x2F; 切换到超级用户gec@ubuntu:~$  sudo -s        [sudo] password for gec:      root@ubuntu:~#    			 &#x2F;&#x2F; root表示超级用户名字  #表示超级用户权限标志&#x2F;&#x2F; 切换到普通用户root@ubuntu:~#  su  xxx      &#x2F;&#x2F; 第一种方式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://example.com/2024/04/20/hello-world/index.html">
+<meta property="og:title" content="Common Linux commands">
+<meta property="og:url" content="http://example.com/2024/04/25/Common-Linux-commands/index.html">
 <meta property="og:site_name" content="Blog of LeanderPeng">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="Linux 常用命令 用户切换  123456789101112&#x2F;&#x2F; 切换到超级用户gec@ubuntu:~$  sudo -s        [sudo] password for gec:      root@ubuntu:~#    			 &#x2F;&#x2F; root表示超级用户名字  #表示超级用户权限标志&#x2F;&#x2F; 切换到普通用户root@ubuntu:~#  su  xxx      &#x2F;&#x2F; 第一种方式">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-04-20T08:53:38.501Z">
-<meta property="article:modified_time" content="2024-04-22T10:48:02.358Z">
+<meta property="article:published_time" content="2024-04-25T11:59:59.000Z">
+<meta property="article:modified_time" content="2024-04-25T12:34:31.235Z">
 <meta property="article:author" content="LeanderPeng">
-<meta property="article:tag" content="C&#x2F;C++,Linux,算法,嵌入式">
+<meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2024/04/20/hello-world/">
+<link rel="canonical" href="http://example.com/2024/04/25/Common-Linux-commands/">
 
 
 <script id="page-configurations">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>Hello World | Blog of LeanderPeng</title>
+  <title>Common Linux commands | Blog of LeanderPeng</title>
   
 
 
@@ -190,7 +190,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/20/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/25/Common-Linux-commands/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar2.jpg">
@@ -203,7 +203,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Hello World
+          Common Linux commands
         </h1>
 
         <div class="post-meta">
@@ -212,16 +212,19 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2024-04-20 16:53:38" itemprop="dateCreated datePublished" datetime="2024-04-20T16:53:38+08:00">2024-04-20</time>
+              <time title="Created: 2024-04-25 19:59:59 / Modified: 20:34:31" itemprop="dateCreated datePublished" datetime="2024-04-25T19:59:59+08:00">2024-04-25</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-04-22 18:48:02" itemprop="dateModified" datetime="2024-04-22T18:48:02+08:00">2024-04-22</time>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
               </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">常用工具</span></a>
+                </span>
+            </span>
 
           
 
@@ -234,19 +237,80 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+        <h2 id="Linux-常用命令"><a href="#Linux-常用命令" class="headerlink" title="Linux 常用命令"></a>Linux 常用命令</h2><ul>
+<li>用户切换</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 切换到超级用户</span><br><span class="line">gec@ubuntu:~$  sudo -s        </span><br><span class="line">[sudo] password for gec:      </span><br><span class="line">root@ubuntu:~#    			 // root表示超级用户名字  #表示超级用户权限标志</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 切换到普通用户</span><br><span class="line">root@ubuntu:~#  su  xxx      // 第一种方式  xxx指的是系统中用户的名称</span><br><span class="line">gec@ubuntu:~$</span><br><span class="line"></span><br><span class="line">root@ubuntu:~#  exit         // 第二种方式 </span><br><span class="line">exit</span><br></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li>查看目录</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ls          // 查看当前目录文件</span><br><span class="line">ls -a       // 不忽略.开头的文件，查看当前目录文件</span><br><span class="line">ls -i       // 查看文件的节点信息，结点信息相当于文件在磁盘的索引</span><br><span class="line">ls -l       // 查看目录下文件的详细信息</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li>切换目录</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd  [选项]  [目录名称]</span><br><span class="line"></span><br><span class="line">cd -      // 回到刚刚去过的目录</span><br><span class="line"></span><br><span class="line">// 没有指定目录的时候默认回到home</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li>创建目录</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir</span><br><span class="line"></span><br><span class="line">mkdir -p      // 递归创建一系列的目录，例如: /home/rain/test/abc</span><br></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li>创建文件</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch  文件名</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li>删除文件</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rm   [选项]  文件或目录</span><br><span class="line"></span><br><span class="line">rm -f     // 强制删除（force），和 -i 选项相反，使用 -f，系统将不再询问，而是直接删除目标文件或目录</span><br><span class="line">rm -i     // 在删除文件或目录之前，系统会给出提示信息</span><br><span class="line">rm -r     // 递归删除，主要用于删除目录，可删除指定目录及包含的所有内容，包括所有的子目录和文件</span><br></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li>移动文件</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mv  [选项]   源文件   目标文件/目录路径</span><br><span class="line"></span><br><span class="line">mv -f     // 强制覆盖，如果目标文件已经存在，则不询问，直接强制覆盖</span><br><span class="line">mv -i     // 交互移动，如果目标文件已经存在，则询问用户是否覆盖（默认选项）</span><br><span class="line">mv -n     // 如果目标文件已经存在，则不会覆盖移动，而且不询问用户</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<hr>
+<ul>
+<li>复制文件</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cp  [选项]  源文件(被复制文件)  目标路径</span><br><span class="line"></span><br><span class="line">cp -i     // 询问，如果目标文件已经存在，则会询问是否覆盖</span><br><span class="line">cp -r     // 递归复制，用于复制目录</span><br><span class="line">cp -u     // 若目标文件和源文件有差异，则可以更新目标文件，可用于对文件的升级和备用</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<ul>
+<li>打印路径</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pwd     //该指令输出的路径是绝对路径</span><br></pre></td></tr></table></figure>
+
+<hr>
+<ul>
+<li>编辑文件</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gedit  文件名</span><br></pre></td></tr></table></figure>
+
+<hr>
+<ul>
+<li>查看文件</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cat file.txt   // 显示文本文件内容</span><br><span class="line">cat -n a.c     // 显示文本文件内容（并显示行号）</span><br><span class="line">cat -A a.c     // 显示文本文件内容（含不可见字符）</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<ul>
+<li>文件权限</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod   权限   文件</span><br></pre></td></tr></table></figure>
+
+<hr>
+<ul>
+<li>查看进程</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ps -ef                      // 显示所有命令，连带命令行</span><br><span class="line">ps -ef | grep 进程关键字      // 查找指定进程格式， 例子：ps -ef | grep php</span><br><span class="line">ps -A                       // 显示进程信息</span><br><span class="line">ps -u root                  //显示root进程用户信息</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 
     </div>
 
@@ -262,7 +326,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>Post link: </strong>
-    <a href="http://example.com/2024/04/20/hello-world/" title="Hello World">http://example.com/2024/04/20/hello-world/</a>
+    <a href="http://example.com/2024/04/25/Common-Linux-commands/" title="Common Linux commands">http://example.com/2024/04/25/Common-Linux-commands/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
@@ -272,17 +336,20 @@
 
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+          </div>
 
         
 
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2024/04/20/how-to-deploy-blog/" rel="next" title="How to deploy blog">
-      How to deploy blog <i class="fa fa-chevron-right"></i>
+    <a href="/2024/04/25/Installation-of-Ubuntu-in-VMware/" rel="prev" title="Installation of Ubuntu in VMware">
+      <i class="fa fa-chevron-left"></i> Installation of Ubuntu in VMware
     </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -341,7 +408,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">1.</span> <span class="nav-text">Linux 常用命令</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
