@@ -28,7 +28,7 @@
 <meta property="og:description" content="Linux 常用命令 用户切换  123456789101112&#x2F;&#x2F; 切换到超级用户gec@ubuntu:~$  sudo -s        [sudo] password for gec:      root@ubuntu:~#    			 &#x2F;&#x2F; root表示超级用户名字  #表示超级用户权限标志&#x2F;&#x2F; 切换到普通用户root@ubuntu:~#  su  xxx      &#x2F;&#x2F; 第一种方式">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-04-25T11:59:59.000Z">
-<meta property="article:modified_time" content="2024-04-25T13:06:07.476Z">
+<meta property="article:modified_time" content="2024-04-25T13:07:44.712Z">
 <meta property="article:author" content="LeanderPeng">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
@@ -177,6 +177,8 @@
     <span>0%</span>
   </div>
 
+  <a href="https://github.com/LeanderPeng" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
 
     <main class="main">
       <div class="main-inner">
@@ -214,7 +216,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2024-04-25 19:59:59 / Modified: 21:06:07" itemprop="dateCreated datePublished" datetime="2024-04-25T19:59:59+08:00">2024-04-25</time>
+              <time title="Created: 2024-04-25 19:59:59 / Modified: 21:07:44" itemprop="dateCreated datePublished" datetime="2024-04-25T19:59:59+08:00">2024-04-25</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -315,7 +317,7 @@
 <ul>
 <li>压缩解压</li>
 </ul>
- <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">tar  选项  目标文件  源文件 </span><br><span class="line"></span><br><span class="line"> -c：创建一个新的归档文件。</span><br><span class="line"> -x：从归档文件中提取文件。</span><br><span class="line"> -f：指定要处理的归档文件名。     //该选项必须放在所有选项的最后面</span><br><span class="line"></span><br><span class="line"> -z：使用gzip压缩创建tar文件。</span><br><span class="line"> -j：使用bzip2压缩法创建存档文件。</span><br><span class="line"></span><br><span class="line">tar cf a.tar dir/*                        // 将目录dir中的所有文件归档成a.tar</span><br><span class="line">tar tf a.tar                              // 查看归档文件a.tar</span><br><span class="line">tar xf a.tar                              // 释放归档文件a.tar</span><br><span class="line"></span><br><span class="line">gec@ubuntu:~$ tar czf a.tar.gz dir/*      // 将目录dir中的所有文件归档并压缩为gz格式</span><br><span class="line">gec@ubuntu:~$ tar xzf a.tar.gz            // 解压压缩文件a.tar.gz</span><br><span class="line"></span><br><span class="line">gec@ubuntu:~$ tar cjf a.tar.bz2 dir/*     // 将目录dir中的所有文件归档并压缩为bz2格式</span><br><span class="line">gec@ubuntu:~$ tar xjf a.tar.bz2           // 解压压缩文件a.tar.bz2</span><br></pre></td></tr></table></figure>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">tar  选项  目标文件  源文件 </span><br><span class="line"></span><br><span class="line"> -c：创建一个新的归档文件。</span><br><span class="line"> -x：从归档文件中提取文件。</span><br><span class="line"> -f：指定要处理的归档文件名。     //该选项必须放在所有选项的最后面</span><br><span class="line"> </span><br><span class="line"> -z：使用gzip压缩创建tar文件。</span><br><span class="line"> -j：使用bzip2压缩法创建存档文件。</span><br><span class="line"></span><br><span class="line">tar cf a.tar dir/*                        // 将目录dir中的所有文件归档成a.tar</span><br><span class="line">tar tf a.tar                              // 查看归档文件a.tar</span><br><span class="line">tar xf a.tar                              // 释放归档文件a.tar</span><br><span class="line"></span><br><span class="line">gec@ubuntu:~$ tar czf a.tar.gz dir/*      // 将目录dir中的所有文件归档并压缩为gz格式</span><br><span class="line">gec@ubuntu:~$ tar xzf a.tar.gz            // 解压压缩文件a.tar.gz</span><br><span class="line"></span><br><span class="line">gec@ubuntu:~$ tar cjf a.tar.bz2 dir/*     // 将目录dir中的所有文件归档并压缩为bz2格式</span><br><span class="line">gec@ubuntu:~$ tar xjf a.tar.bz2           // 解压压缩文件a.tar.bz2</span><br></pre></td></tr></table></figure>
 
 
     </div>
@@ -335,7 +337,7 @@
     <a href="http://example.com/2024/04/25/Common-Linux-commands/" title="Common Linux commands">http://example.com/2024/04/25/Common-Linux-commands/</a>
   </li>
   <li class="post-copyright-license">
-    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/en" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
   </li>
 </ul>
 </div>
@@ -355,7 +357,10 @@
     <a href="/2024/04/25/Installation-of-Ubuntu-in-VMware/" rel="prev" title="Installation of Ubuntu in VMware">
       <i class="fa fa-chevron-left"></i> Installation of Ubuntu in VMware
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2024/04/27/Link-Queue/" rel="next" title="Link Queue">
+      Link Queue <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -430,20 +435,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -457,7 +462,7 @@
       </span>
   </div>
   <div class="cc-license motion-element" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/en" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
   </div>
 
 
