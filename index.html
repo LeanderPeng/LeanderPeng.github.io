@@ -189,6 +189,78 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/06/Delete-element-of-A-in-B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar2.jpg">
+      <meta itemprop="name" content="LeanderPeng">
+      <meta itemprop="description" content="Success keeps eluding me yet my passion abides">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog of LeanderPeng">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/05/06/Delete-element-of-A-in-B/" class="post-title-link" itemprop="url">Delete element of A in B</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2024-05-06 19:09:22 / Modified: 19:31:18" itemprop="dateCreated datePublished" datetime="2024-05-06T19:09:22+08:00">2024-05-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%97%A5%E5%B8%B8%E7%BB%83%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">日常练习</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="删除字符串A中属于B的字母"><a href="#删除字符串A中属于B的字母" class="headerlink" title="删除字符串A中属于B的字母"></a><font color="#3CAA78">删除字符串A中属于B的字母</font></h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">DeleteArr_By_Index</span><span class="params">(<span class="type">char</span> *arr, <span class="type">int</span> index)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="type">int</span> len = <span class="built_in">strlen</span>(arr);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (i = index; i &lt; len <span class="number">-1</span>; i++)</span><br><span class="line">        *(arr + i)  = *(arr + i + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    *(arr+i) = <span class="string">&#x27;\0&#x27;</span>;    <span class="comment">// 将最后以为赋值为\0</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">Del_A_in_B</span><span class="params">(<span class="type">char</span> *A, <span class="type">char</span> *B)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (A == <span class="literal">NULL</span> || B == <span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="type">int</span> i = <span class="number">0</span> , j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (*(A + i) != <span class="string">&#x27;\0&#x27;</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 非字母元素跳过</span></span><br><span class="line">        <span class="keyword">if</span> ((*(A+i) &lt; <span class="string">&#x27;A&#x27;</span> || *(A+i) &gt; <span class="string">&#x27;Z&#x27;</span>) &amp;&amp; (*(A+i) &lt; <span class="string">&#x27;a&#x27;</span> || *(A+i) &gt; <span class="string">&#x27;z&#x27;</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            i++;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">while</span> (*(B + j) != <span class="string">&#x27;\0&#x27;</span>)   </span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 若A中的元素属于B</span></span><br><span class="line">            <span class="keyword">if</span>(*(A + i) == *(B + j) || *(A + i) + <span class="number">32</span> == *(B + j) || *(A + i) - <span class="number">32</span> == *(B + j))</span><br><span class="line">            &#123;</span><br><span class="line">                DeleteArr_By_Index(A,i);</span><br><span class="line">                i--;   <span class="comment">// 删除元素后 ，索引复位</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        i++;</span><br><span class="line">        j = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    <span class="type">char</span> arrA[] = <span class="string">&quot;Hellllo World&quot;</span>;</span><br><span class="line">    <span class="type">char</span> arrB[] = <span class="string">&quot;L o L&quot;</span>;</span><br><span class="line"></span><br><span class="line">    Del_A_in_B(arrA,arrB);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, arrA);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="预期结果"><a href="#预期结果" class="headerlink" title="预期结果"></a>预期结果</h1><p>He Wrd</p>
+<hr>
+<h1 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h1><p><img src="/2024/05/06/Delete-element-of-A-in-B/%E5%9B%BE%E7%89%871.png"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/27/Link-Stack/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -377,7 +449,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-04-29 14:07:52" itemprop="dateModified" datetime="2024-04-29T14:07:52+08:00">2024-04-29</time>
+                <time title="Modified: 2024-04-29 14:14:44" itemprop="dateModified" datetime="2024-04-29T14:14:44+08:00">2024-04-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -476,16 +548,13 @@
 
 <hr>
 <ul>
-<li><p>杀死进程</p>
-</li>
-<li><p>kill</p>
-</li>
+<li>杀死进程</li>
 </ul>
-<p>kill命令是通过向进程发送指定的信号来结束对应ID进程的.</p>
+<p>kill<br>kill命令是通过向进程发送指定的信号来结束对应ID进程的.</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//格式</span><br><span class="line"></span><br><span class="line">kill [参数] [进程id]</span><br><span class="line"></span><br><span class="line">//最常用的信号</span><br><span class="line"></span><br><span class="line">1 (HUP)：重新加载进程。</span><br><span class="line">9 (KILL)：杀死一个进程。</span><br><span class="line">15 (TERM)：正常停止一个进程。</span><br><span class="line"></span><br><span class="line">例子：</span><br><span class="line">kill 12345                               // 杀死进程</span><br><span class="line">kill -KILL 123456                        // 强制杀死进程</span><br><span class="line">kill -HUP pid                            // 发送SIGHUP信号，可以使用一下信号</span><br><span class="line">kill -9 123456                           // 彻底杀死进程</span><br></pre></td></tr></table></figure>
-
 <hr>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> - killall</span><br><span class="line">用于杀死指定名字的进程</span><br><span class="line"></span><br><span class="line">killall [选项]  name</span><br><span class="line"></span><br><span class="line">例子：</span><br><span class="line"></span><br><span class="line">killall -9 php-fpm                        // 结束所有的 php-fpm 进程</span><br></pre></td></tr></table></figure>
+<p>killall<br>用于杀死指定名字的进程</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">killall [选项]  name</span><br><span class="line"></span><br><span class="line">例子：</span><br><span class="line">killall -9 php-fpm                        // 结束所有的 php-fpm 进程</span><br></pre></td></tr></table></figure>
 
 <hr>
 <ul>
@@ -861,7 +930,7 @@ branch: master
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -874,7 +943,7 @@ branch: master
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

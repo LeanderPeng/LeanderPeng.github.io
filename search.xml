@@ -79,16 +79,13 @@
 
 <hr>
 <ul>
-<li><p>杀死进程</p>
-</li>
-<li><p>kill</p>
-</li>
+<li>杀死进程</li>
 </ul>
-<p>kill命令是通过向进程发送指定的信号来结束对应ID进程的.</p>
+<p>kill<br>kill命令是通过向进程发送指定的信号来结束对应ID进程的.</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//格式</span><br><span class="line"></span><br><span class="line">kill [参数] [进程id]</span><br><span class="line"></span><br><span class="line">//最常用的信号</span><br><span class="line"></span><br><span class="line">1 (HUP)：重新加载进程。</span><br><span class="line">9 (KILL)：杀死一个进程。</span><br><span class="line">15 (TERM)：正常停止一个进程。</span><br><span class="line"></span><br><span class="line">例子：</span><br><span class="line">kill 12345                               // 杀死进程</span><br><span class="line">kill -KILL 123456                        // 强制杀死进程</span><br><span class="line">kill -HUP pid                            // 发送SIGHUP信号，可以使用一下信号</span><br><span class="line">kill -9 123456                           // 彻底杀死进程</span><br></pre></td></tr></table></figure>
-
 <hr>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> - killall</span><br><span class="line">用于杀死指定名字的进程</span><br><span class="line"></span><br><span class="line">killall [选项]  name</span><br><span class="line"></span><br><span class="line">例子：</span><br><span class="line"></span><br><span class="line">killall -9 php-fpm                        // 结束所有的 php-fpm 进程</span><br></pre></td></tr></table></figure>
+<p>killall<br>用于杀死指定名字的进程</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">killall [选项]  name</span><br><span class="line"></span><br><span class="line">例子：</span><br><span class="line">killall -9 php-fpm                        // 结束所有的 php-fpm 进程</span><br></pre></td></tr></table></figure>
 
 <hr>
 <ul>
@@ -105,6 +102,22 @@
       </categories>
       <tags>
         <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Delete element of A in B</title>
+    <url>/2024/05/06/Delete-element-of-A-in-B/</url>
+    <content><![CDATA[<h2 id="删除字符串A中属于B的字母"><a href="#删除字符串A中属于B的字母" class="headerlink" title="删除字符串A中属于B的字母"></a><font color="#3CAA78">删除字符串A中属于B的字母</font></h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">DeleteArr_By_Index</span><span class="params">(<span class="type">char</span> *arr, <span class="type">int</span> index)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="type">int</span> len = <span class="built_in">strlen</span>(arr);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (i = index; i &lt; len <span class="number">-1</span>; i++)</span><br><span class="line">        *(arr + i)  = *(arr + i + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    *(arr+i) = <span class="string">&#x27;\0&#x27;</span>;    <span class="comment">// 将最后以为赋值为\0</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">Del_A_in_B</span><span class="params">(<span class="type">char</span> *A, <span class="type">char</span> *B)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (A == <span class="literal">NULL</span> || B == <span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="type">int</span> i = <span class="number">0</span> , j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (*(A + i) != <span class="string">&#x27;\0&#x27;</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 非字母元素跳过</span></span><br><span class="line">        <span class="keyword">if</span> ((*(A+i) &lt; <span class="string">&#x27;A&#x27;</span> || *(A+i) &gt; <span class="string">&#x27;Z&#x27;</span>) &amp;&amp; (*(A+i) &lt; <span class="string">&#x27;a&#x27;</span> || *(A+i) &gt; <span class="string">&#x27;z&#x27;</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            i++;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">while</span> (*(B + j) != <span class="string">&#x27;\0&#x27;</span>)   </span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 若A中的元素属于B</span></span><br><span class="line">            <span class="keyword">if</span>(*(A + i) == *(B + j) || *(A + i) + <span class="number">32</span> == *(B + j) || *(A + i) - <span class="number">32</span> == *(B + j))</span><br><span class="line">            &#123;</span><br><span class="line">                DeleteArr_By_Index(A,i);</span><br><span class="line">                i--;   <span class="comment">// 删除元素后 ，索引复位</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        i++;</span><br><span class="line">        j = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    <span class="type">char</span> arrA[] = <span class="string">&quot;Hellllo World&quot;</span>;</span><br><span class="line">    <span class="type">char</span> arrB[] = <span class="string">&quot;L o L&quot;</span>;</span><br><span class="line"></span><br><span class="line">    Del_A_in_B(arrA,arrB);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, arrA);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="预期结果"><a href="#预期结果" class="headerlink" title="预期结果"></a>预期结果</h1><p>He Wrd</p>
+<hr>
+<h1 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h1><p><img src="/2024/05/06/Delete-element-of-A-in-B/%E5%9B%BE%E7%89%871.png"></p>
+]]></content>
+      <categories>
+        <category>日常练习</category>
+      </categories>
+      <tags>
+        <tag>Algorithm</tag>
       </tags>
   </entry>
   <entry>

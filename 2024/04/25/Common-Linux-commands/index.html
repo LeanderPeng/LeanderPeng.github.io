@@ -28,7 +28,7 @@
 <meta property="og:description" content="Linux 常用命令 用户切换  123456789101112&#x2F;&#x2F; 切换到超级用户gec@ubuntu:~$  sudo -s        [sudo] password for gec:      root@ubuntu:~#    			 &#x2F;&#x2F; root表示超级用户名字  #表示超级用户权限标志&#x2F;&#x2F; 切换到普通用户root@ubuntu:~#  su  xxx      &#x2F;&#x2F; 第一种方式">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-04-25T11:59:59.000Z">
-<meta property="article:modified_time" content="2024-04-29T06:07:52.947Z">
+<meta property="article:modified_time" content="2024-04-29T06:14:44.276Z">
 <meta property="article:author" content="LeanderPeng">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
@@ -222,7 +222,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-04-29 14:07:52" itemprop="dateModified" datetime="2024-04-29T14:07:52+08:00">2024-04-29</time>
+                <time title="Modified: 2024-04-29 14:14:44" itemprop="dateModified" datetime="2024-04-29T14:14:44+08:00">2024-04-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -321,16 +321,13 @@
 
 <hr>
 <ul>
-<li><p>杀死进程</p>
-</li>
-<li><p>kill</p>
-</li>
+<li>杀死进程</li>
 </ul>
-<p>kill命令是通过向进程发送指定的信号来结束对应ID进程的.</p>
+<p>kill<br>kill命令是通过向进程发送指定的信号来结束对应ID进程的.</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//格式</span><br><span class="line"></span><br><span class="line">kill [参数] [进程id]</span><br><span class="line"></span><br><span class="line">//最常用的信号</span><br><span class="line"></span><br><span class="line">1 (HUP)：重新加载进程。</span><br><span class="line">9 (KILL)：杀死一个进程。</span><br><span class="line">15 (TERM)：正常停止一个进程。</span><br><span class="line"></span><br><span class="line">例子：</span><br><span class="line">kill 12345                               // 杀死进程</span><br><span class="line">kill -KILL 123456                        // 强制杀死进程</span><br><span class="line">kill -HUP pid                            // 发送SIGHUP信号，可以使用一下信号</span><br><span class="line">kill -9 123456                           // 彻底杀死进程</span><br></pre></td></tr></table></figure>
-
 <hr>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> - killall</span><br><span class="line">用于杀死指定名字的进程</span><br><span class="line"></span><br><span class="line">killall [选项]  name</span><br><span class="line"></span><br><span class="line">例子：</span><br><span class="line"></span><br><span class="line">killall -9 php-fpm                        // 结束所有的 php-fpm 进程</span><br></pre></td></tr></table></figure>
+<p>killall<br>用于杀死指定名字的进程</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">killall [选项]  name</span><br><span class="line"></span><br><span class="line">例子：</span><br><span class="line">killall -9 php-fpm                        // 结束所有的 php-fpm 进程</span><br></pre></td></tr></table></figure>
 
 <hr>
 <ul>
@@ -457,7 +454,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -470,7 +467,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
