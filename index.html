@@ -212,10 +212,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2024-05-06 19:09:22 / Modified: 19:43:18" itemprop="dateCreated datePublished" datetime="2024-05-06T19:09:22+08:00">2024-05-06</time>
+              <time title="Created: 2024-05-06 19:09:22" itemprop="dateCreated datePublished" datetime="2024-05-06T19:09:22+08:00">2024-05-06</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-05-08 10:17:57" itemprop="dateModified" datetime="2024-05-08T10:17:57+08:00">2024-05-08</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -238,12 +244,14 @@
 
       
           <h2 id="删除字符串A中属于B的字母"><a href="#删除字符串A中属于B的字母" class="headerlink" title="删除字符串A中属于B的字母"></a><font color="#3CAA78">删除字符串A中属于B的字母</font></h2><h3 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h3><p>设计一程序，处理字符串A<br>处理规则：只要B字符串中有的字母，无论大小写，一律从A字符串中删掉</p>
-<h3 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a>代码实现：</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">DeleteArr_By_Index</span><span class="params">(<span class="type">char</span> *arr, <span class="type">int</span> index)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="type">int</span> len = <span class="built_in">strlen</span>(arr);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (i = index; i &lt; len <span class="number">-1</span>; i++)</span><br><span class="line">        *(arr + i)  = *(arr + i + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    *(arr+i) = <span class="string">&#x27;\0&#x27;</span>;    <span class="comment">// 将最后以为赋值为\0</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">Del_A_in_B</span><span class="params">(<span class="type">char</span> *A, <span class="type">char</span> *B)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (A == <span class="literal">NULL</span> || B == <span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="type">int</span> i = <span class="number">0</span> , j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (*(A + i) != <span class="string">&#x27;\0&#x27;</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 非字母元素跳过</span></span><br><span class="line">        <span class="keyword">if</span> ((*(A+i) &lt; <span class="string">&#x27;A&#x27;</span> || *(A+i) &gt; <span class="string">&#x27;Z&#x27;</span>) &amp;&amp; (*(A+i) &lt; <span class="string">&#x27;a&#x27;</span> || *(A+i) &gt; <span class="string">&#x27;z&#x27;</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            i++;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">while</span> (*(B + j) != <span class="string">&#x27;\0&#x27;</span>)   </span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 若A中的元素属于B</span></span><br><span class="line">            <span class="keyword">if</span>(*(A + i) == *(B + j) || *(A + i) + <span class="number">32</span> == *(B + j) || *(A + i) - <span class="number">32</span> == *(B + j))</span><br><span class="line">            &#123;</span><br><span class="line">                DeleteArr_By_Index(A,i);</span><br><span class="line">                i--;   <span class="comment">// 删除元素后 ，索引复位</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        i++;</span><br><span class="line">        j = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    <span class="type">char</span> arrA[] = <span class="string">&quot;Hellllo World&quot;</span>;</span><br><span class="line">    <span class="type">char</span> arrB[] = <span class="string">&quot;L o L&quot;</span>;</span><br><span class="line"></span><br><span class="line">    Del_A_in_B(arrA,arrB);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, arrA);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="预期结果"><a href="#预期结果" class="headerlink" title="预期结果"></a>预期结果</h3><p>He Wrd</p>
-<hr>
-<h3 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h3><p><img src="/2024/05/06/Delete-element-of-A-in-B/%E5%9B%BE%E7%89%871.png"></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/05/06/Delete-element-of-A-in-B/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -285,10 +293,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2024-04-27 08:49:47 / Modified: 09:03:02" itemprop="dateCreated datePublished" datetime="2024-04-27T08:49:47+08:00">2024-04-27</time>
+              <time title="Created: 2024-04-27 08:49:47" itemprop="dateCreated datePublished" datetime="2024-04-27T08:49:47+08:00">2024-04-27</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-05-08 10:18:36" itemprop="dateModified" datetime="2024-05-08T10:18:36+08:00">2024-05-08</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -312,16 +326,14 @@
       
           <h2 id="栈（链表实现）"><a href="#栈（链表实现）" class="headerlink" title="栈（链表实现）"></a><font color="#3CAA78">栈（链表实现）</font></h2><h1 id="队列概念"><a href="#队列概念" class="headerlink" title="队列概念"></a>队列概念</h1><p>栈是一种特殊的线性表，特殊在栈的一端是封闭的，数据的插入与删除只能在栈的另一端进行，也就是栈遵循“后进先出”的原则。也被成为“LIFO”结构，意思是“last input first output”。</p>
 <p>闭合的一端被称为栈底（Stack Bottom），允许数据的插入与删除的一端被称为栈顶（Stack Top），不包含任何元素的栈被称为空栈</p>
-<hr>
-<h1 id="队列的结构"><a href="#队列的结构" class="headerlink" title="队列的结构"></a>队列的结构</h1><ul>
-<li>结构图</li>
-</ul>
-<p>入栈（PUSH）<br><img src="/2024/04/27/Link-Stack/%E5%9B%BE%E7%89%871.jpg"><br>出栈（POP）<br><img src="/2024/04/27/Link-Stack/%E5%9B%BE%E7%89%872.jpg"></p>
-<ul>
-<li>代码描述</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//linkStack.h</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> LINK_STACK_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> LINK_STACK_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> DataType int</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">#<span class="keyword">define</span> POPERROR  -2147483648         <span class="comment">// 出栈错误返回值</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> GETTOPERROR  -2147483648      <span class="comment">// 获取栈顶元素错误返回值</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">node</span>                   // 结点结构体</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    DataType data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">node</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;StackNode;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">stack</span>                  // 栈结构体</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">int</span> size;</span><br><span class="line">    StackNode *top;</span><br><span class="line">&#125;LinkStack;</span><br><span class="line"></span><br><span class="line">LinkStack *<span class="title function_">Inti_LinkStack</span><span class="params">(<span class="type">void</span>)</span>; <span class="comment">// 初始化链栈</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">Stack_IsEmpty</span><span class="params">(LinkStack *<span class="built_in">stack</span>)</span>; <span class="comment">// 判空</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">Push</span><span class="params">(LinkStack *<span class="built_in">stack</span>, DataType data)</span>; <span class="comment">// 入栈</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">Stack_IsEmpty</span><span class="params">(LinkStack *<span class="built_in">stack</span>)</span>; <span class="comment">//判空</span></span><br><span class="line">DataType <span class="title function_">Pop</span><span class="params">(LinkStack *<span class="built_in">stack</span>)</span>; <span class="comment">// 出栈</span></span><br><span class="line">DataType <span class="title function_">Get_top</span><span class="params">(LinkStack *<span class="built_in">stack</span>)</span>; <span class="comment">// 获取栈顶元素</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">Destory_LinkStack</span><span class="params">(LinkStack *<span class="built_in">stack</span>)</span>; <span class="comment">// 摧毁栈</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">Display_Linkstack</span><span class="params">(LinkStack *<span class="built_in">stack</span>)</span>; <span class="comment">// 展示栈</span></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// linkSatck.c</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&quot;linkStack.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建新结点</span></span><br><span class="line"><span class="type">static</span> StackNode *<span class="title function_">NewNode</span><span class="params">(DataType data)</span></span><br><span class="line">&#123;</span><br><span class="line">    StackNode *node = (StackNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(StackNode));</span><br><span class="line">    <span class="keyword">if</span>(node != <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        node-&gt;data = data;</span><br><span class="line">        node-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> node;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化栈</span></span><br><span class="line">LinkStack *<span class="title function_">Inti_LinkStack</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    LinkStack *<span class="built_in">stack</span> = (LinkStack*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(LinkStack));</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">stack</span> != <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">stack</span>-&gt;top = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="built_in">stack</span>-&gt;size = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">stack</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//判空</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">Stack_IsEmpty</span><span class="params">(LinkStack *<span class="built_in">stack</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">stack</span>-&gt;size == <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 头插法插入节点</span></span><br><span class="line"><span class="type">static</span> <span class="type">int</span> <span class="title function_">HeadInsert_node</span><span class="params">(LinkStack *<span class="built_in">stack</span> ,StackNode *node)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">stack</span> == <span class="literal">NULL</span> || node == <span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    node-&gt;next = <span class="built_in">stack</span>-&gt;top;</span><br><span class="line">    <span class="built_in">stack</span>-&gt;top = node;</span><br><span class="line">    <span class="built_in">stack</span>-&gt;size++;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//入栈</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">Push</span><span class="params">(LinkStack *<span class="built_in">stack</span>, DataType data)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> HeadInsert_node(<span class="built_in">stack</span>,NewNode(data));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 出栈</span></span><br><span class="line">DataType <span class="title function_">Pop</span><span class="params">(LinkStack *<span class="built_in">stack</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">stack</span> == <span class="literal">NULL</span> || Stack_IsEmpty(<span class="built_in">stack</span>))</span><br><span class="line">        <span class="keyword">return</span> POPERROR;</span><br><span class="line">    </span><br><span class="line">    StackNode *p = <span class="built_in">stack</span>-&gt;top;</span><br><span class="line">    DataType top_data = p-&gt;data;</span><br><span class="line">    <span class="built_in">stack</span>-&gt;top = <span class="built_in">stack</span>-&gt;top-&gt;next;</span><br><span class="line">    <span class="built_in">free</span>(p);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> top_data;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取栈顶元素</span></span><br><span class="line">DataType <span class="title function_">Get_top</span><span class="params">(LinkStack *<span class="built_in">stack</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">stack</span> == <span class="literal">NULL</span> || Stack_IsEmpty(<span class="built_in">stack</span>))</span><br><span class="line">        <span class="keyword">return</span> GETTOPERROR;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">stack</span>-&gt;top-&gt;data;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 摧毁栈</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">Destory_LinkStack</span><span class="params">(LinkStack *<span class="built_in">stack</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    StackNode *p = <span class="built_in">stack</span>-&gt;top;</span><br><span class="line">    StackNode *q;</span><br><span class="line">    <span class="keyword">while</span>(p != <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        q = p-&gt;next;</span><br><span class="line">        <span class="built_in">free</span>(p);</span><br><span class="line">        p = q;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">free</span>(<span class="built_in">stack</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 展示栈</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">Display_Linkstack</span><span class="params">(LinkStack *<span class="built_in">stack</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">stack</span> == <span class="literal">NULL</span> || Stack_IsEmpty(<span class="built_in">stack</span>))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;stack can not diaplay\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">        </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;(stack top)\n&quot;</span>);</span><br><span class="line">    StackNode *p = <span class="built_in">stack</span>-&gt;top;</span><br><span class="line">    <span class="keyword">while</span> (p != <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;   %d\n&quot;</span>,p-&gt;data);</span><br><span class="line">        p = p-&gt;next; </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;(stack bottom)\n&quot;</span>);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/04/27/Link-Stack/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -363,10 +375,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2024-04-27 08:32:57 / Modified: 09:01:03" itemprop="dateCreated datePublished" datetime="2024-04-27T08:32:57+08:00">2024-04-27</time>
+              <time title="Created: 2024-04-27 08:32:57" itemprop="dateCreated datePublished" datetime="2024-04-27T08:32:57+08:00">2024-04-27</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-05-08 10:18:22" itemprop="dateModified" datetime="2024-05-08T10:18:22+08:00">2024-05-08</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -390,17 +408,14 @@
       
           <h2 id="队列（链表实现）"><a href="#队列（链表实现）" class="headerlink" title="队列（链表实现）"></a><font color="#3CAA78">队列（链表实现）</font></h2><h1 id="队列概念"><a href="#队列概念" class="headerlink" title="队列概念"></a>队列概念</h1><p>队列（Queue）和栈类似，相同点是都属于线性结构，不同点是栈遵循“后进先出”原则，而队列遵循“先进先出”的原则，也被成为“FIFO”结构，就是“First Input First Output”。</p>
 <p>数据结构中的队列的两端都允许操作，只不过要求数据只能从队列的一端插入，从队列的另一端删除，可以把队列理解为一根水管，水管有进水口和出水口。一般把允许数据插入的一端称为队尾（Tail或者Rear），一般把允许删除数据的一端称为队头队首（Head或Front）。</p>
-<hr>
-<h1 id="队列的结构"><a href="#队列的结构" class="headerlink" title="队列的结构"></a>队列的结构</h1><ul>
-<li>结构图</li>
-</ul>
-<p><img src="/2024/04/27/Link-Queue/%E5%9B%BE%E7%89%871.jpg"></p>
-<ul>
-<li>代码描述<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// linkQueue.h</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> LINKQUEUE_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> LINKQUEUE_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> DataType int               <span class="comment">// 数据类型</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> OUTPUTERROR  -2147483648   <span class="comment">// 出栈错误时的返回值</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">node</span>                // 结点结构体</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    DataType data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">node</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;QueueNode;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">queue</span>               // 队列结构体</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">int</span> size;</span><br><span class="line">    QueueNode *front;</span><br><span class="line">    QueueNode *rear;    </span><br><span class="line">&#125;LinkQueue;</span><br><span class="line"></span><br><span class="line">LinkQueue *<span class="title function_">Inti_LinkQueue</span><span class="params">(<span class="type">void</span>)</span>; <span class="comment">//初始化队列</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">Queue_IsEmpty</span><span class="params">(LinkQueue *<span class="built_in">queue</span>)</span>; <span class="comment">// 判空</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">Input</span><span class="params">(LinkQueue *<span class="built_in">queue</span>,DataType data)</span>; <span class="comment">// 入队</span></span><br><span class="line">DataType <span class="title function_">Output</span><span class="params">(LinkQueue *<span class="built_in">queue</span>)</span>; <span class="comment">// 出队</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">Display_Queue</span><span class="params">(LinkQueue *<span class="built_in">queue</span>)</span>; <span class="comment">// 展示队列</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">Distory_Queue</span><span class="params">(LinkQueue *<span class="built_in">queue</span>)</span>; <span class="comment">// 摧毁队列</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// linkQueue.c</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&quot;linkQueue.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建新节点</span></span><br><span class="line"><span class="type">static</span> QueueNode *<span class="title function_">NewNode</span><span class="params">(DataType x)</span></span><br><span class="line">&#123;</span><br><span class="line">    QueueNode *node = (QueueNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(QueueNode));</span><br><span class="line">    <span class="keyword">if</span>(node != <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        node-&gt;data = x;</span><br><span class="line">        node-&gt;next = <span class="literal">NULL</span>; </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> node;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化队列</span></span><br><span class="line">LinkQueue *<span class="title function_">Inti_LinkQueue</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    LinkQueue *<span class="built_in">queue</span> = (LinkQueue*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(LinkQueue));</span><br><span class="line">    <span class="built_in">queue</span>-&gt;front = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="built_in">queue</span>-&gt;rear = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="built_in">queue</span>-&gt;size = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">queue</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判空</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">Queue_IsEmpty</span><span class="params">(LinkQueue *<span class="built_in">queue</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">queue</span>-&gt;size == <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 队头插入结点</span></span><br><span class="line"><span class="type">static</span> <span class="type">int</span> <span class="title function_">Input_Node</span><span class="params">(LinkQueue *<span class="built_in">queue</span>,QueueNode *node)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">queue</span> == <span class="literal">NULL</span> || node == <span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (Queue_IsEmpty(<span class="built_in">queue</span>))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">queue</span>-&gt;rear = node;</span><br><span class="line">        <span class="built_in">queue</span>-&gt;front = node;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">queue</span>-&gt;rear-&gt;next = node;</span><br><span class="line">        <span class="built_in">queue</span>-&gt;rear = node;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">queue</span>-&gt;size++;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 入队</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">Input</span><span class="params">(LinkQueue *<span class="built_in">queue</span>,DataType data)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> Input_Node(<span class="built_in">queue</span>,NewNode(data));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 出队</span></span><br><span class="line">DataType <span class="title function_">Output</span><span class="params">(LinkQueue *<span class="built_in">queue</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">queue</span> == <span class="literal">NULL</span> || Queue_IsEmpty(<span class="built_in">queue</span>))</span><br><span class="line">        <span class="keyword">return</span> OUTPUTERROR;</span><br><span class="line">    </span><br><span class="line">    QueueNode *output_node = <span class="built_in">queue</span>-&gt;front;</span><br><span class="line">    DataType output_data = output_node-&gt;data;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">queue</span>-&gt;size == <span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">queue</span>-&gt;front = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="built_in">queue</span>-&gt;rear = <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">queue</span>-&gt;front = output_node-&gt;next;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">queue</span>-&gt;size--;</span><br><span class="line">    <span class="built_in">free</span>(output_node);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> output_data;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 展示队列</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">Display_Queue</span><span class="params">(LinkQueue *<span class="built_in">queue</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">queue</span> == <span class="literal">NULL</span> || Queue_IsEmpty(<span class="built_in">queue</span>))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;queue can not display\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    QueueNode *p = <span class="built_in">queue</span>-&gt;front;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;(queue front ↑)\n&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="built_in">queue</span>-&gt;size; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,p-&gt;data);</span><br><span class="line">        p = p-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;(queue rear  ↑)\n&quot;</span>);</span><br><span class="line">        </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 摧毁队列</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">Distory_Queue</span><span class="params">(LinkQueue *<span class="built_in">queue</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">queue</span>-&gt;rear-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">    QueueNode *p = <span class="built_in">queue</span>-&gt;front;</span><br><span class="line">    QueueNode *q;</span><br><span class="line">    <span class="keyword">while</span> (p != <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        q = p-&gt;next;</span><br><span class="line">        <span class="built_in">free</span>(p);</span><br><span class="line">        p = q;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">free</span>(<span class="built_in">queue</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/04/27/Link-Queue/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -450,7 +465,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-04-29 14:14:44" itemprop="dateModified" datetime="2024-04-29T14:14:44+08:00">2024-04-29</time>
+                <time title="Modified: 2024-05-08 10:20:30" itemprop="dateModified" datetime="2024-05-08T10:20:30+08:00">2024-05-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -477,96 +492,14 @@
 <li>用户切换</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 切换到超级用户</span><br><span class="line">gec@ubuntu:~$  sudo -s        </span><br><span class="line">[sudo] password for gec:      </span><br><span class="line">root@ubuntu:~#    			 // root表示超级用户名字  #表示超级用户权限标志</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 切换到普通用户</span><br><span class="line">root@ubuntu:~#  su  xxx      // 第一种方式  xxx指的是系统中用户的名称</span><br><span class="line">gec@ubuntu:~$</span><br><span class="line"></span><br><span class="line">root@ubuntu:~#  exit         // 第二种方式 </span><br><span class="line">exit</span><br></pre></td></tr></table></figure>
-<hr>
-<ul>
-<li>查看目录</li>
-</ul>
- <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ls          // 查看当前目录文件</span><br><span class="line">ls -a       // 不忽略.开头的文件，查看当前目录文件</span><br><span class="line">ls -i       // 查看文件的节点信息，结点信息相当于文件在磁盘的索引</span><br><span class="line">ls -l       // 查看目录下文件的详细信息</span><br></pre></td></tr></table></figure>
-
-<hr>
-<ul>
-<li>切换目录</li>
-</ul>
- <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd  [选项]  [目录名称]</span><br><span class="line"></span><br><span class="line">cd -      // 回到刚刚去过的目录</span><br><span class="line"></span><br><span class="line">// 没有指定目录的时候默认回到home</span><br></pre></td></tr></table></figure>
-
-<hr>
-<ul>
-<li>创建目录</li>
-</ul>
- <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir</span><br><span class="line"></span><br><span class="line">mkdir -p      // 递归创建一系列的目录，例如: /home/rain/test/abc</span><br></pre></td></tr></table></figure>
-<hr>
-<ul>
-<li>创建文件</li>
-</ul>
- <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch  文件名</span><br></pre></td></tr></table></figure>
-
-<hr>
-<ul>
-<li>删除文件</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rm   [选项]  文件或目录</span><br><span class="line"></span><br><span class="line">rm -f     // 强制删除（force），和 -i 选项相反，使用 -f，系统将不再询问，而是直接删除目标文件或目录</span><br><span class="line">rm -i     // 在删除文件或目录之前，系统会给出提示信息</span><br><span class="line">rm -r     // 递归删除，主要用于删除目录，可删除指定目录及包含的所有内容，包括所有的子目录和文件</span><br></pre></td></tr></table></figure>
-<hr>
-<ul>
-<li>移动文件</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mv  [选项]   源文件   目标文件/目录路径</span><br><span class="line"></span><br><span class="line">mv -f     // 强制覆盖，如果目标文件已经存在，则不询问，直接强制覆盖</span><br><span class="line">mv -i     // 交互移动，如果目标文件已经存在，则询问用户是否覆盖（默认选项）</span><br><span class="line">mv -n     // 如果目标文件已经存在，则不会覆盖移动，而且不询问用户</span><br></pre></td></tr></table></figure>
-
-<hr>
-<ul>
-<li>复制文件</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cp  [选项]  源文件(被复制文件)  目标路径</span><br><span class="line"></span><br><span class="line">cp -i     // 询问，如果目标文件已经存在，则会询问是否覆盖</span><br><span class="line">cp -r     // 递归复制，用于复制目录</span><br><span class="line">cp -u     // 若目标文件和源文件有差异，则可以更新目标文件，可用于对文件的升级和备用</span><br></pre></td></tr></table></figure>
-
-<hr>
-<ul>
-<li>打印路径</li>
-</ul>
- <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pwd     //该指令输出的路径是绝对路径</span><br></pre></td></tr></table></figure>
-
-<hr>
-<ul>
-<li>编辑文件</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gedit  文件名</span><br></pre></td></tr></table></figure>
-
-<hr>
-<ul>
-<li>查看文件</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat file.txt   // 显示文本文件内容</span><br><span class="line">cat -n a.c     // 显示文本文件内容（并显示行号）</span><br><span class="line">cat -A a.c     // 显示文本文件内容（含不可见字符）</span><br></pre></td></tr></table></figure>
-
-<hr>
-<ul>
-<li>文件权限</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod   权限   文件</span><br></pre></td></tr></table></figure>
-
-<hr>
-<ul>
-<li>查看进程</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ps -ef                      // 显示所有命令，连带命令行</span><br><span class="line">ps -ef | grep 进程关键字      // 查找指定进程格式， 例子：ps -ef | grep php</span><br><span class="line">ps -A                       // 显示进程信息</span><br><span class="line">ps -u root                  //显示root进程用户信息</span><br></pre></td></tr></table></figure>
-
-<hr>
-<ul>
-<li>杀死进程</li>
-</ul>
-<p>kill<br>kill命令是通过向进程发送指定的信号来结束对应ID进程的.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//格式</span><br><span class="line"></span><br><span class="line">kill [参数] [进程id]</span><br><span class="line"></span><br><span class="line">//最常用的信号</span><br><span class="line"></span><br><span class="line">1 (HUP)：重新加载进程。</span><br><span class="line">9 (KILL)：杀死一个进程。</span><br><span class="line">15 (TERM)：正常停止一个进程。</span><br><span class="line"></span><br><span class="line">例子：</span><br><span class="line">kill 12345                               // 杀死进程</span><br><span class="line">kill -KILL 123456                        // 强制杀死进程</span><br><span class="line">kill -HUP pid                            // 发送SIGHUP信号，可以使用一下信号</span><br><span class="line">kill -9 123456                           // 彻底杀死进程</span><br></pre></td></tr></table></figure>
-<hr>
-<p>killall<br>用于杀死指定名字的进程</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">killall [选项]  name</span><br><span class="line"></span><br><span class="line">例子：</span><br><span class="line">killall -9 php-fpm                        // 结束所有的 php-fpm 进程</span><br></pre></td></tr></table></figure>
-
-<hr>
-<ul>
-<li>压缩解压</li>
-</ul>
- <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">tar  选项  目标文件  源文件 </span><br><span class="line"></span><br><span class="line"> -c：创建一个新的归档文件。</span><br><span class="line"> -x：从归档文件中提取文件。</span><br><span class="line"> -f：指定要处理的归档文件名。     //该选项必须放在所有选项的最后面</span><br><span class="line"> </span><br><span class="line"> -z：使用gzip压缩创建tar文件。</span><br><span class="line"> -j：使用bzip2压缩法创建存档文件。</span><br><span class="line"></span><br><span class="line">tar cf a.tar dir/*                        // 将目录dir中的所有文件归档成a.tar</span><br><span class="line">tar tf a.tar                              // 查看归档文件a.tar</span><br><span class="line">tar xf a.tar                              // 释放归档文件a.tar</span><br><span class="line"></span><br><span class="line">gec@ubuntu:~$ tar czf a.tar.gz dir/*      // 将目录dir中的所有文件归档并压缩为gz格式</span><br><span class="line">gec@ubuntu:~$ tar xzf a.tar.gz            // 解压压缩文件a.tar.gz</span><br><span class="line"></span><br><span class="line">gec@ubuntu:~$ tar cjf a.tar.bz2 dir/*     // 将目录dir中的所有文件归档并压缩为bz2格式</span><br><span class="line">gec@ubuntu:~$ tar xjf a.tar.bz2           // 解压压缩文件a.tar.bz2</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">- 显示文件系统磁盘使用情况统计。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>df                                        &#x2F;&#x2F; 显示文件系统磁盘使用情况统计<br>df -h,                                    &#x2F;&#x2F; –human-readable 使用人类可读的格式<br>df -i                                     &#x2F;&#x2F; 显示inode信息而非块使用量<br>df –total                                &#x2F;&#x2F; 显示所有的信息</p>
-<pre><code>
-              
-</code></pre>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/04/25/Common-Linux-commands/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -616,7 +549,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-04-27 10:38:29" itemprop="dateModified" datetime="2024-04-27T10:38:29+08:00">2024-04-27</time>
+                <time title="Modified: 2024-05-08 10:19:53" itemprop="dateModified" datetime="2024-05-08T10:19:53+08:00">2024-05-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -640,47 +573,14 @@
 
       
           <h2 id="安装Ubuntu镜像文件"><a href="#安装Ubuntu镜像文件" class="headerlink" title="安装Ubuntu镜像文件"></a><font color="#3CAA78">安装Ubuntu镜像文件</font></h2><p>Ubuntu中国官网：<a target="_blank" rel="noopener" href="https://cn.ubuntu.com/download/desktop">https://cn.ubuntu.com/download/desktop</a></p>
-<hr>
-<h2 id="在Vmware创建虚拟机"><a href="#在Vmware创建虚拟机" class="headerlink" title="在Vmware创建虚拟机"></a><font color="#3CAA78">在Vmware创建虚拟机</font></h2><ul>
-<li>(1) 打开VMware虚拟机软件,点击主页选择“创建新的虚拟机”，然后点击“典型”，如：</li>
-</ul>
-<p><img src="/2024/04/25/Installation-of-Ubuntu-in-VMware/%E5%9B%BE%E7%89%871.jpg"></p>
-<ul>
-<li><p>(2) 点击“稍后安装操作系统”，然后选择安装Linux系统并且版本选择ubuntu64位，如：<br><img src="/2024/04/25/Installation-of-Ubuntu-in-VMware/%E5%9B%BE%E7%89%872.jpg"></p>
-</li>
-<li><p>(3)	对虚拟机进行命名，并且选择系统的安装路径，然后内存分区20GB，并拆分文件，如:<br><img src="/2024/04/25/Installation-of-Ubuntu-in-VMware/%E5%9B%BE%E7%89%873.jpg"></p>
-</li>
-<li><p>(4)	点击“自定义硬件”设置内存为4GB，处理器为2个，移除USB控制器和打印机，如：<br><img src="/2024/04/25/Installation-of-Ubuntu-in-VMware/%E5%9B%BE%E7%89%874.jpg"></p>
-</li>
-</ul>
-<p>注意：还需要点击“新CD&#x2F;DVD”，然后选择ubuntu系统映像文件，ubuntu-xxxx-xxx.iso，如:<br><img src="/2024/04/25/Installation-of-Ubuntu-in-VMware/%E5%9B%BE%E7%89%875.jpg"></p>
-<ul>
-<li><p>(5)	点击完成，然后等待页面跳转，点击“开启此虚拟机”，等待30s左右，按下回车即可<br><img src="/2024/04/25/Installation-of-Ubuntu-in-VMware/%E5%9B%BE%E7%89%876.jpg"><br><img src="/2024/04/25/Installation-of-Ubuntu-in-VMware/%E5%9B%BE%E7%89%877.jpg"></p>
-</li>
-<li><p>(6) 选择系统语言,这里选择“中文简体”为例，点击“安装ubuntu系统”，键盘布局选择chinese即可。<br><img src="/2024/04/25/Installation-of-Ubuntu-in-VMware/%E5%9B%BE%E7%89%878.jpg"><br><img src="/2024/04/25/Installation-of-Ubuntu-in-VMware/%E5%9B%BE%E7%89%879.jpg"></p>
-</li>
-<li><p>(7) 选择“最小安装软件”，并且要取消勾选“安装ubuntu并更新”，不要勾选，如下图：<br><img src="/2024/04/25/Installation-of-Ubuntu-in-VMware/%E5%9B%BE%E7%89%8710.jpg"></p>
-</li>
-<li><p>(8) 点击“清除整个磁盘并安装”，指的是把之前指定的文件夹中的内容删除并安装，如下：<br><img src="/2024/04/25/Installation-of-Ubuntu-in-VMware/%E5%9B%BE%E7%89%8711.jpg"><br><img src="/2024/04/25/Installation-of-Ubuntu-in-VMware/%E5%9B%BE%E7%89%8712.jpg"></p>
-</li>
-<li><p>(9) 然后选择所在时区，比如“Shanghai”，然后填写个人信息，比如用户名以及密码，如:<br><img src="/2024/04/25/Installation-of-Ubuntu-in-VMware/%E5%9B%BE%E7%89%8713.jpg"><br><img src="/2024/04/25/Installation-of-Ubuntu-in-VMware/%E5%9B%BE%E7%89%8714.jpg"></p>
-</li>
-<li><p>(10) 最后，等待安装完成，点击“现在重启”，按下回车，选择账号输入密码，进入系统即可</p>
-</li>
-</ul>
-<hr>
-<h2 id="修改软件源"><a href="#修改软件源" class="headerlink" title="修改软件源"></a><font color="#3CAA78">修改软件源</font></h2><p> 因为国内的网络基础设施更加完善，网络延迟更低，而且国内的服务器通常距离用户更近，数据传输速度更快。<br> 所以我们最后将软件源更换为国内的。</p>
-<p> 进入ubuntu系统之后点击“setting”，然后点击“about”进行软件源的修改，如下图：</p>
-<p><img src="/2024/04/25/Installation-of-Ubuntu-in-VMware/%E5%9B%BE%E7%89%8715.jpg"><br><img src="/2024/04/25/Installation-of-Ubuntu-in-VMware/%E5%9B%BE%E7%89%8716.jpg"><br><img src="/2024/04/25/Installation-of-Ubuntu-in-VMware/%E5%9B%BE%E7%89%8717.jpg"></p>
-<p>注意：修改完软件源之后打开Ubuntu系统的命令行终端（Ctrl+Alt+T），输入指令：sudo apt update ，会提示输入密码，注意密码是不回显的！！！更新Ubuntu系统的服务器软件清单。</p>
-<p><img src="/2024/04/25/Installation-of-Ubuntu-in-VMware/%E5%9B%BE%E7%89%8718.jpg"></p>
-<hr>
-<h2 id="安装增强工具"><a href="#安装增强工具" class="headerlink" title="安装增强工具"></a><font color="#3CAA78">安装增强工具</font></h2><p>一般在安装linux系统之后，都是可以自动调整分辨率，但是有些情况会导致分辨率没有办法修改，所以可以选择重新安装vmtools，是linux系统的增强工具，安装该工具，可以实现分辨率调节、共享文件夹、文件穿梭等功能。</p>
-<p>手动安装</p>
-<p>第一步：关闭Vmware软件的正在运行的Linux系统，然后点击vmware菜单栏的“虚拟机”</p>
-<p>第二步：重新启动Linux系统，在启动的过程中点击菜单栏的“虚拟机”中“重新安装vmtools”<br><img src="/2024/04/25/Installation-of-Ubuntu-in-VMware/%E5%9B%BE%E7%89%8719.jpg"><br><img src="/2024/04/25/Installation-of-Ubuntu-in-VMware/%E5%9B%BE%E7%89%8720.jpg"><br><img src="/2024/04/25/Installation-of-Ubuntu-in-VMware/%E5%9B%BE%E7%89%8721.jpg"><br><img src="/2024/04/25/Installation-of-Ubuntu-in-VMware/%E5%9B%BE%E7%89%8722.jpg"><br><img src="/2024/04/25/Installation-of-Ubuntu-in-VMware/%E5%9B%BE%E7%89%8723.jpg"><br><img src="/2024/04/25/Installation-of-Ubuntu-in-VMware/%E5%9B%BE%E7%89%8724.jpg"></p>
-<p>输入用户密码，然后按照提示完成vmware-tools工具的安装，然后重启Linux系统即可</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/04/25/Installation-of-Ubuntu-in-VMware/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -730,7 +630,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-04-22 19:18:16" itemprop="dateModified" datetime="2024-04-22T19:18:16+08:00">2024-04-22</time>
+                <time title="Modified: 2024-05-08 10:19:38" itemprop="dateModified" datetime="2024-05-08T10:19:38+08:00">2024-05-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -754,24 +654,14 @@
 
       
           <h2 id="安装Git和Nodejs"><a href="#安装Git和Nodejs" class="headerlink" title="安装Git和Nodejs"></a>安装Git和Nodejs</h2><p>node -v #查看node版本<br>npm -v #查看npm版本<br>npm install -g cnpm –registry&#x3D;<a target="_blank" rel="noopener" href="http://registry.npm.taobao.org/">http://registry.npm.taobao.org</a> #安装淘宝的cnpm 管理器<br>cnpm -v #查看cnpm版本<br>cnpm install -g hexo-cli #安装hexo框架<br>hexo -v #查看hexo版本</p>
-<hr>
-<h2 id="创建hexo博客文件夹"><a href="#创建hexo博客文件夹" class="headerlink" title="创建hexo博客文件夹"></a>创建hexo博客文件夹</h2><p>mkdir blog #创建blog目录<br>cd blog #进入blog目录<br>sudo hexo init #生成博客 初始化博客<br>hexo s #启动本地博客服务<br><a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000/</a> #本地访问地址</p>
-<hr>
-<h2 id="部署到Github"><a href="#部署到Github" class="headerlink" title="部署到Github"></a>部署到Github</h2><p>hexo n “我的第一篇文章” #创建新的文章<br>#返回blog目录<br>hexo clean #清理<br>hexo g #生成<br>#Github创建一个新的仓库 YourGithubName.github.io<br>cnpm install –save hexo-deployer-git #在blog目录下安装git部署插件</p>
-<h2 id="配置-config-yml"><a href="#配置-config-yml" class="headerlink" title="#配置_config.yml "></a>#配置_config.yml </h2><pre><code>#Deployment
-##Docs: https://hexo.io/docs/deployment.html
-deploy:
-type: git
-repo: https://github.com/YourGithubName/YourGithubName.github.io.git
-branch: master
-</code></pre>
-<hr>
-<p>hexo d #部署到Github仓库里<br><a target="_blank" rel="noopener" href="https://yourgithubname.github.io/">https://YourGithubName.github.io/</a> #访问这个地址可以查看博客</p>
-<hr>
-<h2 id="修改主题"><a href="#修改主题" class="headerlink" title="修改主题"></a>修改主题</h2><p>git clone <a target="_blank" rel="noopener" href="https://github.com/litten/hexo-theme-yilia.git">https://github.com/litten/hexo-theme-yilia.git</a> themes&#x2F;yilia #下载yilia主题到本地</p>
-<p>#修改hexo根目录下的 _config.yml 文件 ： theme: yilia</p>
-<p>hexo c #清理一下<br>hexo g #生成<br>hexo d #部署到远程Github仓库<br><a target="_blank" rel="noopener" href="https://yourgithubname.github.io/">https://YourGithubName.github.io/</a> #查看博客</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/04/20/how-to-deploy-blog/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -821,7 +711,7 @@ branch: master
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-04-22 18:48:02" itemprop="dateModified" datetime="2024-04-22T18:48:02+08:00">2024-04-22</time>
+                <time title="Modified: 2024-05-08 10:15:00" itemprop="dateModified" datetime="2024-05-08T10:15:00+08:00">2024-05-08</time>
               </span>
 
           
@@ -836,19 +726,14 @@ branch: master
 
       
           <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/04/20/hello-world/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 

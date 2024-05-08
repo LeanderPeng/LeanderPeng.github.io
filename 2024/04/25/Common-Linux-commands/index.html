@@ -28,7 +28,7 @@
 <meta property="og:description" content="Linux 常用命令 用户切换  123456789101112&#x2F;&#x2F; 切换到超级用户gec@ubuntu:~$  sudo -s        [sudo] password for gec:      root@ubuntu:~#    			 &#x2F;&#x2F; root表示超级用户名字  #表示超级用户权限标志&#x2F;&#x2F; 切换到普通用户root@ubuntu:~#  su  xxx      &#x2F;&#x2F; 第一种方式">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-04-25T11:59:59.000Z">
-<meta property="article:modified_time" content="2024-04-29T06:14:44.276Z">
+<meta property="article:modified_time" content="2024-05-08T02:20:30.359Z">
 <meta property="article:author" content="LeanderPeng">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
@@ -222,7 +222,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-04-29 14:14:44" itemprop="dateModified" datetime="2024-04-29T14:14:44+08:00">2024-04-29</time>
+                <time title="Modified: 2024-05-08 10:20:30" itemprop="dateModified" datetime="2024-05-08T10:20:30+08:00">2024-05-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -249,6 +249,7 @@
 <li>用户切换</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 切换到超级用户</span><br><span class="line">gec@ubuntu:~$  sudo -s        </span><br><span class="line">[sudo] password for gec:      </span><br><span class="line">root@ubuntu:~#    			 // root表示超级用户名字  #表示超级用户权限标志</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 切换到普通用户</span><br><span class="line">root@ubuntu:~#  su  xxx      // 第一种方式  xxx指的是系统中用户的名称</span><br><span class="line">gec@ubuntu:~$</span><br><span class="line"></span><br><span class="line">root@ubuntu:~#  exit         // 第二种方式 </span><br><span class="line">exit</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
 <hr>
 <ul>
 <li>查看目录</li>
@@ -333,11 +334,13 @@
 <ul>
 <li>压缩解压</li>
 </ul>
- <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">tar  选项  目标文件  源文件 </span><br><span class="line"></span><br><span class="line"> -c：创建一个新的归档文件。</span><br><span class="line"> -x：从归档文件中提取文件。</span><br><span class="line"> -f：指定要处理的归档文件名。     //该选项必须放在所有选项的最后面</span><br><span class="line"> </span><br><span class="line"> -z：使用gzip压缩创建tar文件。</span><br><span class="line"> -j：使用bzip2压缩法创建存档文件。</span><br><span class="line"></span><br><span class="line">tar cf a.tar dir/*                        // 将目录dir中的所有文件归档成a.tar</span><br><span class="line">tar tf a.tar                              // 查看归档文件a.tar</span><br><span class="line">tar xf a.tar                              // 释放归档文件a.tar</span><br><span class="line"></span><br><span class="line">gec@ubuntu:~$ tar czf a.tar.gz dir/*      // 将目录dir中的所有文件归档并压缩为gz格式</span><br><span class="line">gec@ubuntu:~$ tar xzf a.tar.gz            // 解压压缩文件a.tar.gz</span><br><span class="line"></span><br><span class="line">gec@ubuntu:~$ tar cjf a.tar.bz2 dir/*     // 将目录dir中的所有文件归档并压缩为bz2格式</span><br><span class="line">gec@ubuntu:~$ tar xjf a.tar.bz2           // 解压压缩文件a.tar.bz2</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">- 显示文件系统磁盘使用情况统计。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>df                                        &#x2F;&#x2F; 显示文件系统磁盘使用情况统计<br>df -h,                                    &#x2F;&#x2F; –human-readable 使用人类可读的格式<br>df -i                                     &#x2F;&#x2F; 显示inode信息而非块使用量<br>df –total                                &#x2F;&#x2F; 显示所有的信息</p>
-<pre><code>
-              
-</code></pre>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">tar  选项  目标文件  源文件 </span><br><span class="line"></span><br><span class="line"> -c：创建一个新的归档文件。</span><br><span class="line"> -x：从归档文件中提取文件。</span><br><span class="line"> -f：指定要处理的归档文件名。     //该选项必须放在所有选项的最后面</span><br><span class="line"> </span><br><span class="line"> -z：使用gzip压缩创建tar文件。</span><br><span class="line"> -j：使用bzip2压缩法创建存档文件。</span><br><span class="line"></span><br><span class="line">tar cf a.tar dir/*                        // 将目录dir中的所有文件归档成a.tar</span><br><span class="line">tar tf a.tar                              // 查看归档文件a.tar</span><br><span class="line">tar xf a.tar                              // 释放归档文件a.tar</span><br><span class="line"></span><br><span class="line">gec@ubuntu:~$ tar czf a.tar.gz dir/*      // 将目录dir中的所有文件归档并压缩为gz格式</span><br><span class="line">gec@ubuntu:~$ tar xzf a.tar.gz            // 解压压缩文件a.tar.gz</span><br><span class="line"></span><br><span class="line">gec@ubuntu:~$ tar cjf a.tar.bz2 dir/*     // 将目录dir中的所有文件归档并压缩为bz2格式</span><br><span class="line">gec@ubuntu:~$ tar xjf a.tar.bz2           // 解压压缩文件a.tar.bz2</span><br></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li>显示文件系统磁盘使用情况统计。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">df                                        // 显示文件系统磁盘使用情况统计</span><br><span class="line">df -h,                                    // --human-readable 使用人类可读的格式</span><br><span class="line">df -i                                     // 显示inode信息而非块使用量</span><br><span class="line">df --total                                // 显示所有的信息</span><br></pre></td></tr></table></figure>
+
 
     </div>
 
