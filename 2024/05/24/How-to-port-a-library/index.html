@@ -20,20 +20,25 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="安装Git和Nodejsnode -v #查看node版本npm -v #查看npm版本npm install -g cnpm –registry&#x3D;http:&#x2F;&#x2F;registry.npm.taobao.org #安装淘宝的cnpm 管理器cnpm -v #查看cnpm版本cnpm install -g hexo-cli #安装hexo框架hexo -v #查看hexo版本">
+  <meta name="description" content="将JPEG库移植道Linux系统1、从对应的官网下载库的源码包本文以JPEG库为例，移植其他的库操作类似。 搜索 libjpeg（xxlib\libxx）,找代码托管网站（xx.sorceforge、github、gitee），或者原生官网（xx.xx.org）下载。 2、解压文件，阅读redme（使用代码编辑器打开）定位到 DOCUMENTATION ROADMAP  User document">
 <meta property="og:type" content="article">
-<meta property="og:title" content="How to deploy blog">
-<meta property="og:url" content="http://example.com/2024/04/20/how-to-deploy-blog/index.html">
+<meta property="og:title" content="How to port a library">
+<meta property="og:url" content="http://example.com/2024/05/24/How-to-port-a-library/index.html">
 <meta property="og:site_name" content="Blog of LeanderPeng">
-<meta property="og:description" content="安装Git和Nodejsnode -v #查看node版本npm -v #查看npm版本npm install -g cnpm –registry&#x3D;http:&#x2F;&#x2F;registry.npm.taobao.org #安装淘宝的cnpm 管理器cnpm -v #查看cnpm版本cnpm install -g hexo-cli #安装hexo框架hexo -v #查看hexo版本">
+<meta property="og:description" content="将JPEG库移植道Linux系统1、从对应的官网下载库的源码包本文以JPEG库为例，移植其他的库操作类似。 搜索 libjpeg（xxlib\libxx）,找代码托管网站（xx.sorceforge、github、gitee），或者原生官网（xx.xx.org）下载。 2、解压文件，阅读redme（使用代码编辑器打开）定位到 DOCUMENTATION ROADMAP  User document">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-04-20T08:54:54.000Z">
-<meta property="article:modified_time" content="2024-05-08T02:19:38.944Z">
+<meta property="og:image" content="http://example.com/2024/05/24/How-to-port-a-library/%E5%9B%BE%E7%89%871.png">
+<meta property="og:image" content="http://example.com/2024/05/24/How-to-port-a-library/%E5%9B%BE%E7%89%872.png">
+<meta property="og:image" content="http://example.com/2024/05/24/How-to-port-a-library/%E5%9B%BE%E7%89%873.png">
+<meta property="article:published_time" content="2024-05-24T12:54:53.000Z">
+<meta property="article:modified_time" content="2024-05-24T13:11:33.227Z">
 <meta property="article:author" content="LeanderPeng">
-<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="JPEG Library">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2024/05/24/How-to-port-a-library/%E5%9B%BE%E7%89%871.png">
 
-<link rel="canonical" href="http://example.com/2024/04/20/how-to-deploy-blog/">
+<link rel="canonical" href="http://example.com/2024/05/24/How-to-port-a-library/">
 
 
 <script id="page-configurations">
@@ -46,7 +51,7 @@
   };
 </script>
 
-  <title>How to deploy blog | Blog of LeanderPeng</title>
+  <title>How to port a library | Blog of LeanderPeng</title>
   
 
 
@@ -192,7 +197,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/20/how-to-deploy-blog/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/24/How-to-port-a-library/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar2.jpg">
@@ -205,7 +210,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          How to deploy blog
+          How to port a library
         </h1>
 
         <div class="post-meta">
@@ -214,23 +219,17 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2024-04-20 16:54:54" itemprop="dateCreated datePublished" datetime="2024-04-20T16:54:54+08:00">2024-04-20</time>
+              <time title="Created: 2024-05-24 20:54:53 / Modified: 21:11:33" itemprop="dateCreated datePublished" datetime="2024-05-24T20:54:53+08:00">2024-05-24</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-08 10:19:38" itemprop="dateModified" datetime="2024-05-08T10:19:38+08:00">2024-05-08</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/" itemprop="url" rel="index"><span itemprop="name">环境部署</span></a>
+                  <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">嵌入式开发</span></a>
                 </span>
             </span>
 
@@ -240,7 +239,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>859</span>
+              <span>824</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -259,25 +258,22 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="安装Git和Nodejs"><a href="#安装Git和Nodejs" class="headerlink" title="安装Git和Nodejs"></a>安装Git和Nodejs</h2><p>node -v #查看node版本<br>npm -v #查看npm版本<br>npm install -g cnpm –registry&#x3D;<a target="_blank" rel="noopener" href="http://registry.npm.taobao.org/">http://registry.npm.taobao.org</a> #安装淘宝的cnpm 管理器<br>cnpm -v #查看cnpm版本<br>cnpm install -g hexo-cli #安装hexo框架<br>hexo -v #查看hexo版本</p>
-<span id="more"></span>
-<hr>
-<h2 id="创建hexo博客文件夹"><a href="#创建hexo博客文件夹" class="headerlink" title="创建hexo博客文件夹"></a>创建hexo博客文件夹</h2><p>mkdir blog #创建blog目录<br>cd blog #进入blog目录<br>sudo hexo init #生成博客 初始化博客<br>hexo s #启动本地博客服务<br><a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000/</a> #本地访问地址</p>
-<hr>
-<h2 id="部署到Github"><a href="#部署到Github" class="headerlink" title="部署到Github"></a>部署到Github</h2><p>hexo n “我的第一篇文章” #创建新的文章<br>#返回blog目录<br>hexo clean #清理<br>hexo g #生成<br>#Github创建一个新的仓库 YourGithubName.github.io<br>cnpm install –save hexo-deployer-git #在blog目录下安装git部署插件</p>
-<h2 id="配置-config-yml"><a href="#配置-config-yml" class="headerlink" title="#配置_config.yml "></a>#配置_config.yml </h2><pre><code>#Deployment
-##Docs: https://hexo.io/docs/deployment.html
-deploy:
-type: git
-repo: https://github.com/YourGithubName/YourGithubName.github.io.git
-branch: master
-</code></pre>
-<hr>
-<p>hexo d #部署到Github仓库里<br><a target="_blank" rel="noopener" href="https://yourgithubname.github.io/">https://YourGithubName.github.io/</a> #访问这个地址可以查看博客</p>
-<hr>
-<h2 id="修改主题"><a href="#修改主题" class="headerlink" title="修改主题"></a>修改主题</h2><p>git clone <a target="_blank" rel="noopener" href="https://github.com/litten/hexo-theme-yilia.git">https://github.com/litten/hexo-theme-yilia.git</a> themes&#x2F;yilia #下载yilia主题到本地</p>
-<p>#修改hexo根目录下的 _config.yml 文件 ： theme: yilia</p>
-<p>hexo c #清理一下<br>hexo g #生成<br>hexo d #部署到远程Github仓库<br><a target="_blank" rel="noopener" href="https://yourgithubname.github.io/">https://YourGithubName.github.io/</a> #查看博客</p>
+        <h2 id="将JPEG库移植道Linux系统"><a href="#将JPEG库移植道Linux系统" class="headerlink" title="将JPEG库移植道Linux系统"></a><font color="#3CAA78">将JPEG库移植道Linux系统</font></h2><h3 id="1、从对应的官网下载库的源码包"><a href="#1、从对应的官网下载库的源码包" class="headerlink" title="1、从对应的官网下载库的源码包"></a>1、从对应的官网下载库的源码包</h3><p>本文以JPEG库为例，移植其他的库操作类似。</p>
+<p>搜索 libjpeg（xxlib\libxx）,<br>找代码托管网站（xx.sorceforge、github、gitee），或者原生官网（xx.xx.org）下载。</p>
+<h3 id="2、解压文件，阅读redme（使用代码编辑器打开）"><a href="#2、解压文件，阅读redme（使用代码编辑器打开）" class="headerlink" title="2、解压文件，阅读redme（使用代码编辑器打开）"></a>2、解压文件，阅读redme（使用代码编辑器打开）</h3><p>定位到 DOCUMENTATION ROADMAP</p>
+<ul>
+<li><p>User documentation:<br>install.txt            （如何配置和安装libjpeg库）<br>usage.txt              （cjpeg、djpeg、jpegtran的结构）</p>
+</li>
+<li><p>Programmer and internal documentation:<br>libjpeg.txt            （如何在自己程序中使用libjpeg库）<br>example.c              （案例程序，用于参考）</p>
+</li>
+</ul>
+<h3 id="3、查看install-txt，定位到自己使用的系统，学习libjpeg库的移植和安装步骤。"><a href="#3、查看install-txt，定位到自己使用的系统，学习libjpeg库的移植和安装步骤。" class="headerlink" title="3、查看install.txt，定位到自己使用的系统，学习libjpeg库的移植和安装步骤。"></a>3、查看install.txt，定位到自己使用的系统，学习libjpeg库的移植和安装步骤。</h3><p>移植libjpeg的步骤：</p>
+<p><img src="/2024/05/24/How-to-port-a-library/%E5%9B%BE%E7%89%871.png"></p>
+<p>.&#x2F;configure –help查看所有配置选项</p>
+<h3 id="4、把下载好的源码包-jpegsrc-v9f-tar-gz-发送到linux系统下的home目录下解压（注意不要再共享文件夹操作）"><a href="#4、把下载好的源码包-jpegsrc-v9f-tar-gz-发送到linux系统下的home目录下解压（注意不要再共享文件夹操作）" class="headerlink" title="4、把下载好的源码包 jpegsrc.v9f.tar.gz 发送到linux系统下的home目录下解压（注意不要再共享文件夹操作）"></a>4、把下载好的源码包 jpegsrc.v9f.tar.gz 发送到linux系统下的home目录下解压（注意不要再共享文件夹操作）</h3><p><img src="/2024/05/24/How-to-port-a-library/%E5%9B%BE%E7%89%872.png"></p>
+<h3 id="5、切换到解压后的-jpeg-9f-文件夹内，输入指令配置libjpeg库，配置的时候需要使用一个叫做configure的配置文件，该配置文件有两个非常重要的选项-–prefix（自定义路径）-和-–host（使用平台）"><a href="#5、切换到解压后的-jpeg-9f-文件夹内，输入指令配置libjpeg库，配置的时候需要使用一个叫做configure的配置文件，该配置文件有两个非常重要的选项-–prefix（自定义路径）-和-–host（使用平台）" class="headerlink" title="5、切换到解压后的 jpeg-9f 文件夹内，输入指令配置libjpeg库，配置的时候需要使用一个叫做configure的配置文件，该配置文件有两个非常重要的选项 –prefix（自定义路径） 和 –host（使用平台）"></a>5、切换到解压后的 jpeg-9f 文件夹内，输入指令配置libjpeg库，配置的时候需要使用一个叫做configure的配置文件，该配置文件有两个非常重要的选项 –prefix（自定义路径） 和 –host（使用平台）</h3><p><img src="/2024/05/24/How-to-port-a-library/%E5%9B%BE%E7%89%873.png"></p>
+<h3 id="6、配置成功后，会的到一个-makefile-脚本文件。"><a href="#6、配置成功后，会的到一个-makefile-脚本文件。" class="headerlink" title="6、配置成功后，会的到一个 makefile 脚本文件。"></a>6、配置成功后，会的到一个 makefile 脚本文件。</h3><p>此时就可以进行移植的第二步：编译，在命令行输入命令：make，该指令会自动执行makefile。<br>确保编译过程中没有错误，若出现错误需要重新配置。</p>
+<h3 id="7、编译通过后，则可以完成libjpeg库的安装，此时在命令行输入指令：make-install"><a href="#7、编译通过后，则可以完成libjpeg库的安装，此时在命令行输入指令：make-install" class="headerlink" title="7、编译通过后，则可以完成libjpeg库的安装，此时在命令行输入指令：make install"></a>7、编译通过后，则可以完成libjpeg库的安装，此时在命令行输入指令：make install</h3><h3 id="8、安装成功后，可以在用户指定的安装路径中找到生成的libjpeg库的头文件（include）和库文件（lib）。"><a href="#8、安装成功后，可以在用户指定的安装路径中找到生成的libjpeg库的头文件（include）和库文件（lib）。" class="headerlink" title="8、安装成功后，可以在用户指定的安装路径中找到生成的libjpeg库的头文件（include）和库文件（lib）。"></a>8、安装成功后，可以在用户指定的安装路径中找到生成的libjpeg库的头文件（include）和库文件（lib）。</h3><p>用户可以选择拷贝出来，在程序设计时使用。</p>
 
     </div>
 
@@ -293,7 +289,7 @@ branch: master
   </li>
   <li class="post-copyright-link">
     <strong>Post link: </strong>
-    <a href="http://example.com/2024/04/20/how-to-deploy-blog/" title="How to deploy blog">http://example.com/2024/04/20/how-to-deploy-blog/</a>
+    <a href="http://example.com/2024/05/24/How-to-port-a-library/" title="How to port a library">http://example.com/2024/05/24/How-to-port-a-library/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
@@ -304,7 +300,8 @@ branch: master
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/hexo/" rel="tag"># hexo</a>
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+              <a href="/tags/JPEG-Library/" rel="tag"># JPEG Library</a>
           </div>
 
         
@@ -313,13 +310,10 @@ branch: master
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2024/04/20/hello-world/" rel="prev" title="Hello World">
-      <i class="fa fa-chevron-left"></i> Hello World
+    <a href="/2024/05/11/Find-the-hardware-parameters-of-the-LCD-screen/" rel="prev" title="Find the hardware parameters of the LCD screen">
+      <i class="fa fa-chevron-left"></i> Find the hardware parameters of the LCD screen
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2024/04/25/Installation-of-Ubuntu-in-VMware/" rel="next" title="Installation of Ubuntu in VMware">
-      Installation of Ubuntu in VMware <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -378,7 +372,7 @@ branch: master
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Git%E5%92%8CNodejs"><span class="nav-number">1.</span> <span class="nav-text">安装Git和Nodejs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="nav-number">2.</span> <span class="nav-text">创建hexo博客文件夹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2%E5%88%B0Github"><span class="nav-number">3.</span> <span class="nav-text">部署到Github</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-config-yml"><span class="nav-number">4.</span> <span class="nav-text">#配置_config.yml </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E4%B8%BB%E9%A2%98"><span class="nav-number">5.</span> <span class="nav-text">修改主题</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%86JPEG%E5%BA%93%E7%A7%BB%E6%A4%8D%E9%81%93Linux%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.</span> <span class="nav-text">将JPEG库移植道Linux系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E4%BB%8E%E5%AF%B9%E5%BA%94%E7%9A%84%E5%AE%98%E7%BD%91%E4%B8%8B%E8%BD%BD%E5%BA%93%E7%9A%84%E6%BA%90%E7%A0%81%E5%8C%85"><span class="nav-number">1.1.</span> <span class="nav-text">1、从对应的官网下载库的源码包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E8%A7%A3%E5%8E%8B%E6%96%87%E4%BB%B6%EF%BC%8C%E9%98%85%E8%AF%BBredme%EF%BC%88%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%A0%81%E7%BC%96%E8%BE%91%E5%99%A8%E6%89%93%E5%BC%80%EF%BC%89"><span class="nav-number">1.2.</span> <span class="nav-text">2、解压文件，阅读redme（使用代码编辑器打开）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E6%9F%A5%E7%9C%8Binstall-txt%EF%BC%8C%E5%AE%9A%E4%BD%8D%E5%88%B0%E8%87%AA%E5%B7%B1%E4%BD%BF%E7%94%A8%E7%9A%84%E7%B3%BB%E7%BB%9F%EF%BC%8C%E5%AD%A6%E4%B9%A0libjpeg%E5%BA%93%E7%9A%84%E7%A7%BB%E6%A4%8D%E5%92%8C%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4%E3%80%82"><span class="nav-number">1.3.</span> <span class="nav-text">3、查看install.txt，定位到自己使用的系统，学习libjpeg库的移植和安装步骤。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81%E6%8A%8A%E4%B8%8B%E8%BD%BD%E5%A5%BD%E7%9A%84%E6%BA%90%E7%A0%81%E5%8C%85-jpegsrc-v9f-tar-gz-%E5%8F%91%E9%80%81%E5%88%B0linux%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%9A%84home%E7%9B%AE%E5%BD%95%E4%B8%8B%E8%A7%A3%E5%8E%8B%EF%BC%88%E6%B3%A8%E6%84%8F%E4%B8%8D%E8%A6%81%E5%86%8D%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9%E6%93%8D%E4%BD%9C%EF%BC%89"><span class="nav-number">1.4.</span> <span class="nav-text">4、把下载好的源码包 jpegsrc.v9f.tar.gz 发送到linux系统下的home目录下解压（注意不要再共享文件夹操作）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5%E3%80%81%E5%88%87%E6%8D%A2%E5%88%B0%E8%A7%A3%E5%8E%8B%E5%90%8E%E7%9A%84-jpeg-9f-%E6%96%87%E4%BB%B6%E5%A4%B9%E5%86%85%EF%BC%8C%E8%BE%93%E5%85%A5%E6%8C%87%E4%BB%A4%E9%85%8D%E7%BD%AElibjpeg%E5%BA%93%EF%BC%8C%E9%85%8D%E7%BD%AE%E7%9A%84%E6%97%B6%E5%80%99%E9%9C%80%E8%A6%81%E4%BD%BF%E7%94%A8%E4%B8%80%E4%B8%AA%E5%8F%AB%E5%81%9Aconfigure%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%EF%BC%8C%E8%AF%A5%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%9C%89%E4%B8%A4%E4%B8%AA%E9%9D%9E%E5%B8%B8%E9%87%8D%E8%A6%81%E7%9A%84%E9%80%89%E9%A1%B9-%E2%80%93prefix%EF%BC%88%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B7%AF%E5%BE%84%EF%BC%89-%E5%92%8C-%E2%80%93host%EF%BC%88%E4%BD%BF%E7%94%A8%E5%B9%B3%E5%8F%B0%EF%BC%89"><span class="nav-number">1.5.</span> <span class="nav-text">5、切换到解压后的 jpeg-9f 文件夹内，输入指令配置libjpeg库，配置的时候需要使用一个叫做configure的配置文件，该配置文件有两个非常重要的选项 –prefix（自定义路径） 和 –host（使用平台）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6%E3%80%81%E9%85%8D%E7%BD%AE%E6%88%90%E5%8A%9F%E5%90%8E%EF%BC%8C%E4%BC%9A%E7%9A%84%E5%88%B0%E4%B8%80%E4%B8%AA-makefile-%E8%84%9A%E6%9C%AC%E6%96%87%E4%BB%B6%E3%80%82"><span class="nav-number">1.6.</span> <span class="nav-text">6、配置成功后，会的到一个 makefile 脚本文件。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7%E3%80%81%E7%BC%96%E8%AF%91%E9%80%9A%E8%BF%87%E5%90%8E%EF%BC%8C%E5%88%99%E5%8F%AF%E4%BB%A5%E5%AE%8C%E6%88%90libjpeg%E5%BA%93%E7%9A%84%E5%AE%89%E8%A3%85%EF%BC%8C%E6%AD%A4%E6%97%B6%E5%9C%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BE%93%E5%85%A5%E6%8C%87%E4%BB%A4%EF%BC%9Amake-install"><span class="nav-number">1.7.</span> <span class="nav-text">7、编译通过后，则可以完成libjpeg库的安装，此时在命令行输入指令：make install</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8%E3%80%81%E5%AE%89%E8%A3%85%E6%88%90%E5%8A%9F%E5%90%8E%EF%BC%8C%E5%8F%AF%E4%BB%A5%E5%9C%A8%E7%94%A8%E6%88%B7%E6%8C%87%E5%AE%9A%E7%9A%84%E5%AE%89%E8%A3%85%E8%B7%AF%E5%BE%84%E4%B8%AD%E6%89%BE%E5%88%B0%E7%94%9F%E6%88%90%E7%9A%84libjpeg%E5%BA%93%E7%9A%84%E5%A4%B4%E6%96%87%E4%BB%B6%EF%BC%88include%EF%BC%89%E5%92%8C%E5%BA%93%E6%96%87%E4%BB%B6%EF%BC%88lib%EF%BC%89%E3%80%82"><span class="nav-number">1.8.</span> <span class="nav-text">8、安装成功后，可以在用户指定的安装路径中找到生成的libjpeg库的头文件（include）和库文件（lib）。</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
