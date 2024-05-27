@@ -212,10 +212,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2024-05-24 20:54:53 / Modified: 21:11:33" itemprop="dateCreated datePublished" datetime="2024-05-24T20:54:53+08:00">2024-05-24</time>
+              <time title="Created: 2024-05-24 20:54:53" itemprop="dateCreated datePublished" datetime="2024-05-24T20:54:53+08:00">2024-05-24</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-05-27 21:22:24" itemprop="dateModified" datetime="2024-05-27T21:22:24+08:00">2024-05-27</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -254,20 +260,14 @@
           <h2 id="将JPEG库移植道Linux系统"><a href="#将JPEG库移植道Linux系统" class="headerlink" title="将JPEG库移植道Linux系统"></a><font color="#3CAA78">将JPEG库移植道Linux系统</font></h2><h3 id="1、从对应的官网下载库的源码包"><a href="#1、从对应的官网下载库的源码包" class="headerlink" title="1、从对应的官网下载库的源码包"></a>1、从对应的官网下载库的源码包</h3><p>本文以JPEG库为例，移植其他的库操作类似。</p>
 <p>搜索 libjpeg（xxlib\libxx）,<br>找代码托管网站（xx.sorceforge、github、gitee），或者原生官网（xx.xx.org）下载。</p>
 <h3 id="2、解压文件，阅读redme（使用代码编辑器打开）"><a href="#2、解压文件，阅读redme（使用代码编辑器打开）" class="headerlink" title="2、解压文件，阅读redme（使用代码编辑器打开）"></a>2、解压文件，阅读redme（使用代码编辑器打开）</h3><p>定位到 DOCUMENTATION ROADMAP</p>
-<ul>
-<li><p>User documentation:<br>install.txt            （如何配置和安装libjpeg库）<br>usage.txt              （cjpeg、djpeg、jpegtran的结构）</p>
-</li>
-<li><p>Programmer and internal documentation:<br>libjpeg.txt            （如何在自己程序中使用libjpeg库）<br>example.c              （案例程序，用于参考）</p>
-</li>
-</ul>
-<h3 id="3、查看install-txt，定位到自己使用的系统，学习libjpeg库的移植和安装步骤。"><a href="#3、查看install-txt，定位到自己使用的系统，学习libjpeg库的移植和安装步骤。" class="headerlink" title="3、查看install.txt，定位到自己使用的系统，学习libjpeg库的移植和安装步骤。"></a>3、查看install.txt，定位到自己使用的系统，学习libjpeg库的移植和安装步骤。</h3><p>移植libjpeg的步骤：</p>
-<p><img src="/2024/05/24/How-to-port-a-library/%E5%9B%BE%E7%89%871.png"></p>
-<p>.&#x2F;configure –help查看所有配置选项</p>
-<h3 id="4、把下载好的源码包-jpegsrc-v9f-tar-gz-发送到linux系统下的home目录下解压（注意不要再共享文件夹操作）"><a href="#4、把下载好的源码包-jpegsrc-v9f-tar-gz-发送到linux系统下的home目录下解压（注意不要再共享文件夹操作）" class="headerlink" title="4、把下载好的源码包 jpegsrc.v9f.tar.gz 发送到linux系统下的home目录下解压（注意不要再共享文件夹操作）"></a>4、把下载好的源码包 jpegsrc.v9f.tar.gz 发送到linux系统下的home目录下解压（注意不要再共享文件夹操作）</h3><p><img src="/2024/05/24/How-to-port-a-library/%E5%9B%BE%E7%89%872.png"></p>
-<h3 id="5、切换到解压后的-jpeg-9f-文件夹内，输入指令配置libjpeg库，配置的时候需要使用一个叫做configure的配置文件，该配置文件有两个非常重要的选项-–prefix（自定义路径）-和-–host（使用平台）"><a href="#5、切换到解压后的-jpeg-9f-文件夹内，输入指令配置libjpeg库，配置的时候需要使用一个叫做configure的配置文件，该配置文件有两个非常重要的选项-–prefix（自定义路径）-和-–host（使用平台）" class="headerlink" title="5、切换到解压后的 jpeg-9f 文件夹内，输入指令配置libjpeg库，配置的时候需要使用一个叫做configure的配置文件，该配置文件有两个非常重要的选项 –prefix（自定义路径） 和 –host（使用平台）"></a>5、切换到解压后的 jpeg-9f 文件夹内，输入指令配置libjpeg库，配置的时候需要使用一个叫做configure的配置文件，该配置文件有两个非常重要的选项 –prefix（自定义路径） 和 –host（使用平台）</h3><p><img src="/2024/05/24/How-to-port-a-library/%E5%9B%BE%E7%89%873.png"></p>
-<h3 id="6、配置成功后，会的到一个-makefile-脚本文件。"><a href="#6、配置成功后，会的到一个-makefile-脚本文件。" class="headerlink" title="6、配置成功后，会的到一个 makefile 脚本文件。"></a>6、配置成功后，会的到一个 makefile 脚本文件。</h3><p>此时就可以进行移植的第二步：编译，在命令行输入命令：make，该指令会自动执行makefile。<br>确保编译过程中没有错误，若出现错误需要重新配置。</p>
-<h3 id="7、编译通过后，则可以完成libjpeg库的安装，此时在命令行输入指令：make-install"><a href="#7、编译通过后，则可以完成libjpeg库的安装，此时在命令行输入指令：make-install" class="headerlink" title="7、编译通过后，则可以完成libjpeg库的安装，此时在命令行输入指令：make install"></a>7、编译通过后，则可以完成libjpeg库的安装，此时在命令行输入指令：make install</h3><h3 id="8、安装成功后，可以在用户指定的安装路径中找到生成的libjpeg库的头文件（include）和库文件（lib）。"><a href="#8、安装成功后，可以在用户指定的安装路径中找到生成的libjpeg库的头文件（include）和库文件（lib）。" class="headerlink" title="8、安装成功后，可以在用户指定的安装路径中找到生成的libjpeg库的头文件（include）和库文件（lib）。"></a>8、安装成功后，可以在用户指定的安装路径中找到生成的libjpeg库的头文件（include）和库文件（lib）。</h3><p>用户可以选择拷贝出来，在程序设计时使用。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/05/24/How-to-port-a-library/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
