@@ -1,65 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Delete element of A in B</title>
-    <url>/2024/05/06/Delete-element-of-A-in-B/</url>
-    <content><![CDATA[<h2 id="删除字符串A中属于B的字母"><a href="#删除字符串A中属于B的字母" class="headerlink" title="删除字符串A中属于B的字母"></a><font color="#3CAA78">删除字符串A中属于B的字母</font></h2><h3 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h3><p>设计一程序，处理字符串A<br>处理规则：只要B字符串中有的字母，无论大小写，一律从A字符串中删掉</p>
-<span id="more"></span>
-
-<h3 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a>代码实现：</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">DeleteArr_By_Index</span><span class="params">(<span class="type">char</span> *arr, <span class="type">int</span> index)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="type">int</span> len = <span class="built_in">strlen</span>(arr);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (i = index; i &lt; len <span class="number">-1</span>; i++)</span><br><span class="line">        *(arr + i)  = *(arr + i + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    *(arr+i) = <span class="string">&#x27;\0&#x27;</span>;    <span class="comment">// 将最后以为赋值为\0</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">Del_A_in_B</span><span class="params">(<span class="type">char</span> *A, <span class="type">char</span> *B)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (A == <span class="literal">NULL</span> || B == <span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="type">int</span> i = <span class="number">0</span> , j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (*(A + i) != <span class="string">&#x27;\0&#x27;</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 非字母元素跳过</span></span><br><span class="line">        <span class="keyword">if</span> ((*(A+i) &lt; <span class="string">&#x27;A&#x27;</span> || *(A+i) &gt; <span class="string">&#x27;Z&#x27;</span>) &amp;&amp; (*(A+i) &lt; <span class="string">&#x27;a&#x27;</span> || *(A+i) &gt; <span class="string">&#x27;z&#x27;</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            i++;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">while</span> (*(B + j) != <span class="string">&#x27;\0&#x27;</span>)   </span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 若A中的元素属于B</span></span><br><span class="line">            <span class="keyword">if</span>(*(A + i) == *(B + j) || *(A + i) + <span class="number">32</span> == *(B + j) || *(A + i) - <span class="number">32</span> == *(B + j))</span><br><span class="line">            &#123;</span><br><span class="line">                DeleteArr_By_Index(A,i);</span><br><span class="line">                i--;   <span class="comment">// 删除元素后 ，索引复位</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        i++;</span><br><span class="line">        j = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    <span class="type">char</span> arrA[] = <span class="string">&quot;Hellllo World&quot;</span>;</span><br><span class="line">    <span class="type">char</span> arrB[] = <span class="string">&quot;L o L&quot;</span>;</span><br><span class="line"></span><br><span class="line">    Del_A_in_B(arrA,arrB);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, arrA);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="预期结果"><a href="#预期结果" class="headerlink" title="预期结果"></a>预期结果</h3><p>He Wrd</p>
-<hr>
-<h3 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h3><p><img src="/2024/05/06/Delete-element-of-A-in-B/%E5%9B%BE%E7%89%871.png"></p>
-]]></content>
-      <categories>
-        <category>日常练习</category>
-      </categories>
-      <tags>
-        <tag>Algorithm</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Find the hardware parameters of the LCD screen</title>
-    <url>/2024/05/11/Find-the-hardware-parameters-of-the-LCD-screen/</url>
-    <content><![CDATA[<h2 id="LCD屏幕硬件参数"><a href="#LCD屏幕硬件参数" class="headerlink" title="LCD屏幕硬件参数"></a><font color="#3CAA78">LCD屏幕硬件参数</font></h2><p>在开发过程中，面对不同型号的LCD屏幕，使用文件IO接口时，应该根据LCD屏幕的实际的硬件参数来申请内存，这样有助于提高程序的可移植性.（在使用其他硬件设备的时候也是一样的）</p>
-<hr>
-<h3 id="硬件参数"><a href="#硬件参数" class="headerlink" title="硬件参数"></a>硬件参数</h3><p>在Linux系统下是利用Framebuffer子系统来驱动显示设备的，所以Framebuffer子系统会读取LCD屏的硬件信息并存储在内核空间中，关于LCD的硬件参数都是定义在**&#x2F;usr&#x2F;include&#x2F;linux&#x2F;fb.h**头文件中。</p>
-<span id="more"></span>
-
-<p><img src="/2024/05/11/Find-the-hardware-parameters-of-the-LCD-screen/%E5%9B%BE%E7%89%871.png"></p>
-<p><img src="/2024/05/11/Find-the-hardware-parameters-of-the-LCD-screen/%E5%9B%BE%E7%89%872.png"></p>
-<p>通过fb.h可以看到头文件中存在三个比较重要的结构体，分别是struct fb_fix_screeninfo以及struct fb_var_screeninfo以及struct fb_bitfield，除了这三个结构体之外，可以发现头文件中存在大量的宏定义，用户可以通过这些宏定义来指定读取LCD的部分信息</p>
-<ul>
-<li>struct fb_fix_screeninfo结构体</li>
-</ul>
-<p>struct fb_fix_screeninfo结构体主要用于获取FrameBuffer的固定参数，用户无法在应用层修改这些参数，只能通过系统调用ioctl函数使用宏定义FBIOGET_FSCREENINFO去获取这些参数。</p>
-<p><img src="/2024/05/11/Find-the-hardware-parameters-of-the-LCD-screen/%E5%9B%BE%E7%89%873.png"></p>
-<p><img src="/2024/05/11/Find-the-hardware-parameters-of-the-LCD-screen/%E5%9B%BE%E7%89%874.png"></p>
-<ul>
-<li>struct fb_var_screeninfo结构体</li>
-</ul>
-<p>struct fb_var_screeninfo结构体主要用于获取和设置FrameBuffer的可变屏幕参数，包括分辨率、像素位深、像素格式等。这些信息可以通过ioctl函数使用宏定义FBIOGET_VSCREENINFO获取，也可以通过宏定义FBIOPUT_VSCREENINFO修改。</p>
-<p><img src="/2024/05/11/Find-the-hardware-parameters-of-the-LCD-screen/%E5%9B%BE%E7%89%875.png"></p>
-<p><img src="/2024/05/11/Find-the-hardware-parameters-of-the-LCD-screen/%E5%9B%BE%E7%89%875.1.png"><br><img src="/2024/05/11/Find-the-hardware-parameters-of-the-LCD-screen/%E5%9B%BE%E7%89%875.2.png"></p>
-<ul>
-<li>struct fb_bitfield结构体</li>
-</ul>
-<p>struct fb_bitfield结构体用于fb缓存的RGB位域，该结构描述每一个像素显示缓冲区的组织方式</p>
-<p><img src="/2024/05/11/Find-the-hardware-parameters-of-the-LCD-screen/%E5%9B%BE%E7%89%876.png"></p>
-<hr>
-<h3 id="文件控制"><a href="#文件控制" class="headerlink" title="文件控制"></a>文件控制</h3><p>Linux系统提供了一个ioctl（input&#x2F;output control）函数，该函数是一个专用于设备输入输出操作的系统调用，该调用传入一个跟设备有关的请求码，系统调用的功能完全取决于请求码。</p>
-<p><img src="/2024/05/11/Find-the-hardware-parameters-of-the-LCD-screen/%E5%9B%BE%E7%89%877.png"></p>
-<p>请求码是通过宏定义的方式写入到硬件的驱动程序中，当驱动安装成功后，用户就可以通过头文件中的请求码向内核中的驱动程序发出请求，然后内核通过请求码去访问硬件，再把访问结果返回给用户。</p>
-]]></content>
-      <categories>
-        <category>嵌入式开发</category>
-      </categories>
-      <tags>
-        <tag>Linux kernel</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Common Linux commands</title>
     <url>/2024/04/25/Common-Linux-commands/</url>
     <content><![CDATA[<h2 id="Linux-常用命令"><a href="#Linux-常用命令" class="headerlink" title="Linux 常用命令"></a><font color="#3CAA78">Linux 常用命令</font></h2><ul>
@@ -174,6 +115,65 @@
       </categories>
       <tags>
         <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Delete element of A in B</title>
+    <url>/2024/05/06/Delete-element-of-A-in-B/</url>
+    <content><![CDATA[<h2 id="删除字符串A中属于B的字母"><a href="#删除字符串A中属于B的字母" class="headerlink" title="删除字符串A中属于B的字母"></a><font color="#3CAA78">删除字符串A中属于B的字母</font></h2><h3 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h3><p>设计一程序，处理字符串A<br>处理规则：只要B字符串中有的字母，无论大小写，一律从A字符串中删掉</p>
+<span id="more"></span>
+
+<h3 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a>代码实现：</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">DeleteArr_By_Index</span><span class="params">(<span class="type">char</span> *arr, <span class="type">int</span> index)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="type">int</span> len = <span class="built_in">strlen</span>(arr);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (i = index; i &lt; len <span class="number">-1</span>; i++)</span><br><span class="line">        *(arr + i)  = *(arr + i + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    *(arr+i) = <span class="string">&#x27;\0&#x27;</span>;    <span class="comment">// 将最后以为赋值为\0</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">Del_A_in_B</span><span class="params">(<span class="type">char</span> *A, <span class="type">char</span> *B)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (A == <span class="literal">NULL</span> || B == <span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="type">int</span> i = <span class="number">0</span> , j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (*(A + i) != <span class="string">&#x27;\0&#x27;</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 非字母元素跳过</span></span><br><span class="line">        <span class="keyword">if</span> ((*(A+i) &lt; <span class="string">&#x27;A&#x27;</span> || *(A+i) &gt; <span class="string">&#x27;Z&#x27;</span>) &amp;&amp; (*(A+i) &lt; <span class="string">&#x27;a&#x27;</span> || *(A+i) &gt; <span class="string">&#x27;z&#x27;</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            i++;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">while</span> (*(B + j) != <span class="string">&#x27;\0&#x27;</span>)   </span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 若A中的元素属于B</span></span><br><span class="line">            <span class="keyword">if</span>(*(A + i) == *(B + j) || *(A + i) + <span class="number">32</span> == *(B + j) || *(A + i) - <span class="number">32</span> == *(B + j))</span><br><span class="line">            &#123;</span><br><span class="line">                DeleteArr_By_Index(A,i);</span><br><span class="line">                i--;   <span class="comment">// 删除元素后 ，索引复位</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        i++;</span><br><span class="line">        j = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    <span class="type">char</span> arrA[] = <span class="string">&quot;Hellllo World&quot;</span>;</span><br><span class="line">    <span class="type">char</span> arrB[] = <span class="string">&quot;L o L&quot;</span>;</span><br><span class="line"></span><br><span class="line">    Del_A_in_B(arrA,arrB);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, arrA);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="预期结果"><a href="#预期结果" class="headerlink" title="预期结果"></a>预期结果</h3><p>He Wrd</p>
+<hr>
+<h3 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h3><p><img src="/2024/05/06/Delete-element-of-A-in-B/%E5%9B%BE%E7%89%871.png"></p>
+]]></content>
+      <categories>
+        <category>日常练习</category>
+      </categories>
+      <tags>
+        <tag>Algorithm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Find the hardware parameters of the LCD screen</title>
+    <url>/2024/05/11/Find-the-hardware-parameters-of-the-LCD-screen/</url>
+    <content><![CDATA[<h2 id="LCD屏幕硬件参数"><a href="#LCD屏幕硬件参数" class="headerlink" title="LCD屏幕硬件参数"></a><font color="#3CAA78">LCD屏幕硬件参数</font></h2><p>在开发过程中，面对不同型号的LCD屏幕，使用文件IO接口时，应该根据LCD屏幕的实际的硬件参数来申请内存，这样有助于提高程序的可移植性.（在使用其他硬件设备的时候也是一样的）</p>
+<hr>
+<h3 id="硬件参数"><a href="#硬件参数" class="headerlink" title="硬件参数"></a>硬件参数</h3><p>在Linux系统下是利用Framebuffer子系统来驱动显示设备的，所以Framebuffer子系统会读取LCD屏的硬件信息并存储在内核空间中，关于LCD的硬件参数都是定义在**&#x2F;usr&#x2F;include&#x2F;linux&#x2F;fb.h**头文件中。</p>
+<span id="more"></span>
+
+<p><img src="/2024/05/11/Find-the-hardware-parameters-of-the-LCD-screen/%E5%9B%BE%E7%89%871.png"></p>
+<p><img src="/2024/05/11/Find-the-hardware-parameters-of-the-LCD-screen/%E5%9B%BE%E7%89%872.png"></p>
+<p>通过fb.h可以看到头文件中存在三个比较重要的结构体，分别是struct fb_fix_screeninfo以及struct fb_var_screeninfo以及struct fb_bitfield，除了这三个结构体之外，可以发现头文件中存在大量的宏定义，用户可以通过这些宏定义来指定读取LCD的部分信息</p>
+<ul>
+<li>struct fb_fix_screeninfo结构体</li>
+</ul>
+<p>struct fb_fix_screeninfo结构体主要用于获取FrameBuffer的固定参数，用户无法在应用层修改这些参数，只能通过系统调用ioctl函数使用宏定义FBIOGET_FSCREENINFO去获取这些参数。</p>
+<p><img src="/2024/05/11/Find-the-hardware-parameters-of-the-LCD-screen/%E5%9B%BE%E7%89%873.png"></p>
+<p><img src="/2024/05/11/Find-the-hardware-parameters-of-the-LCD-screen/%E5%9B%BE%E7%89%874.png"></p>
+<ul>
+<li>struct fb_var_screeninfo结构体</li>
+</ul>
+<p>struct fb_var_screeninfo结构体主要用于获取和设置FrameBuffer的可变屏幕参数，包括分辨率、像素位深、像素格式等。这些信息可以通过ioctl函数使用宏定义FBIOGET_VSCREENINFO获取，也可以通过宏定义FBIOPUT_VSCREENINFO修改。</p>
+<p><img src="/2024/05/11/Find-the-hardware-parameters-of-the-LCD-screen/%E5%9B%BE%E7%89%875.png"></p>
+<p><img src="/2024/05/11/Find-the-hardware-parameters-of-the-LCD-screen/%E5%9B%BE%E7%89%875.1.png"><br><img src="/2024/05/11/Find-the-hardware-parameters-of-the-LCD-screen/%E5%9B%BE%E7%89%875.2.png"></p>
+<ul>
+<li>struct fb_bitfield结构体</li>
+</ul>
+<p>struct fb_bitfield结构体用于fb缓存的RGB位域，该结构描述每一个像素显示缓冲区的组织方式</p>
+<p><img src="/2024/05/11/Find-the-hardware-parameters-of-the-LCD-screen/%E5%9B%BE%E7%89%876.png"></p>
+<hr>
+<h3 id="文件控制"><a href="#文件控制" class="headerlink" title="文件控制"></a>文件控制</h3><p>Linux系统提供了一个ioctl（input&#x2F;output control）函数，该函数是一个专用于设备输入输出操作的系统调用，该调用传入一个跟设备有关的请求码，系统调用的功能完全取决于请求码。</p>
+<p><img src="/2024/05/11/Find-the-hardware-parameters-of-the-LCD-screen/%E5%9B%BE%E7%89%877.png"></p>
+<p>请求码是通过宏定义的方式写入到硬件的驱动程序中，当驱动安装成功后，用户就可以通过头文件中的请求码向内核中的驱动程序发出请求，然后内核通过请求码去访问硬件，再把访问结果返回给用户。</p>
+]]></content>
+      <categories>
+        <category>嵌入式开发</category>
+      </categories>
+      <tags>
+        <tag>Linux kernel</tag>
       </tags>
   </entry>
   <entry>
