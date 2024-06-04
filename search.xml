@@ -85,7 +85,7 @@
 <p>将点分十进制字符串”192.168.xxx.xxx”转换为网络字节序，inet_aton()、inet_addr()</p>
 <p><img src="/2024/06/04/What-is-Network-Byte-Order/%E5%9B%BE%E7%89%873.png"></p>
 <hr>
-<h2 id="字符串与基本数据类型转换函数"><a href="#字符串与基本数据类型转换函数" class="headerlink" title="字符串与基本数据类型转换函数"></a><font color="#3CAA78">字符串与基本数据类型转换函数</font></h2><p>c语言库函数提供了一系列的函数方便我们进行字符串与基本数据类型之间的转换，比如atoi(),atof(),atol()函数等等</p>
+<h2 id="字符串与基本数据类型转换函数"><a href="#字符串与基本数据类型转换函数" class="headerlink" title="字符串与基本数据类型转换函数"></a><font color="#3CAA78">字符串与基本数据类型转换函数</font></h2><p>c语言库函数提供了一系列的函数方便我们进行字符串与基本数据类型之间的转换，比如atoi()、atof()、atol()函数等等</p>
 <table>
 <thead>
 <tr>
