@@ -17,13 +17,13 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"leanderpeng.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="为什么Stm32初始化外设都需要先打开时钟理由一由于STM32属于低功耗的MCU，为了降低功耗，STM32的MCU在复位后会把绝大多数的外设时钟关闭，所以当用户需要使用到MCU内部的某个外设，就必须先开启定时器。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Why do STM32 initialization peripherals need to turn on the clock first?">
-<meta property="og:url" content="http://example.com/2024/07/04/Why-do-STM32-initialization-peripherals-need-to-turn-on-the-clock-first/index.html">
+<meta property="og:url" content="http://leanderpeng.github.io/2024/07/04/Why-do-STM32-initialization-peripherals-need-to-turn-on-the-clock-first/index.html">
 <meta property="og:site_name" content="Blog of LeanderPeng">
 <meta property="og:description" content="为什么Stm32初始化外设都需要先打开时钟理由一由于STM32属于低功耗的MCU，为了降低功耗，STM32的MCU在复位后会把绝大多数的外设时钟关闭，所以当用户需要使用到MCU内部的某个外设，就必须先开启定时器。">
 <meta property="og:locale" content="en_US">
@@ -33,7 +33,7 @@
 <meta property="article:tag" content="STM32">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2024/07/04/Why-do-STM32-initialization-peripherals-need-to-turn-on-the-clock-first/">
+<link rel="canonical" href="http://leanderpeng.github.io/2024/07/04/Why-do-STM32-initialization-peripherals-need-to-turn-on-the-clock-first/">
 
 
 <script id="page-configurations">
@@ -192,7 +192,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/07/04/Why-do-STM32-initialization-peripherals-need-to-turn-on-the-clock-first/">
+    <link itemprop="mainEntityOfPage" href="http://leanderpeng.github.io/2024/07/04/Why-do-STM32-initialization-peripherals-need-to-turn-on-the-clock-first/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar2.jpg">
@@ -274,7 +274,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>Post link: </strong>
-    <a href="http://example.com/2024/07/04/Why-do-STM32-initialization-peripherals-need-to-turn-on-the-clock-first/" title="Why do STM32 initialization peripherals need to turn on the clock first?">http://example.com/2024/07/04/Why-do-STM32-initialization-peripherals-need-to-turn-on-the-clock-first/</a>
+    <a href="http://leanderpeng.github.io/2024/07/04/Why-do-STM32-initialization-peripherals-need-to-turn-on-the-clock-first/" title="Why do STM32 initialization peripherals need to turn on the clock first?">http://leanderpeng.github.io/2024/07/04/Why-do-STM32-initialization-peripherals-need-to-turn-on-the-clock-first/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
@@ -297,7 +297,10 @@
     <a href="/2024/06/12/What-is-base64-code/" rel="prev" title="What is Base64 code">
       <i class="fa fa-chevron-left"></i> What is Base64 code
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2024/07/17/Serial-communication/" rel="next" title="Serial communication">
+      Serial communication <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -372,14 +375,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">16</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -432,12 +435,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">31k</span>
+    <span title="Symbols count total">32k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">28 mins.</span>
+    <span title="Reading time total">29 mins.</span>
 </div>
 
 <!--

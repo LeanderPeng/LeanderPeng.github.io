@@ -1,6 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Serial communication</title>
+    <url>/2024/07/17/Serial-communication/</url>
+    <content><![CDATA[<h1 id="串口通信"><a href="#串口通信" class="headerlink" title="串口通信"></a><font color="#3CAA78">串口通信</font></h1><h2 id="UART串口通信简介"><a href="#UART串口通信简介" class="headerlink" title="UART串口通信简介"></a>UART串口通信简介</h2><p>通用异步收发器 UART(Universal Asynchronous Receiver&#x2F;Transmiter)，是一种<strong>串行、异步、全双工</strong>的通信协议，将所需传输的数据位接一位地传输，在UART通讯协议中信号线上的状态位高电平代表”’，低电平代表”0。其特点是通信线路简单，只要一对传输线就可以实现双向通信，大大降低了成本，但传送速度较慢。</p>
+<p>通用同步异步收发器(USART)能够灵活地与外部设备进行全双工数据交换，满足外部设备对工业标准:NRZ(Non Return Zero)异步串行数据格式的要求。USART通过小数波特率发生器提供了多种波特率。</p>
+<span id="more"></span>
+
+<h2 id="串口传输"><a href="#串口传输" class="headerlink" title="串口传输"></a>串口传输</h2><h3 id="字符格式"><a href="#字符格式" class="headerlink" title="字符格式"></a>字符格式</h3><p>一般在进行串口通信的时候，需要通信双方在协议层规定好传输的数据包（字符帧）的格式，字符帧由起始位、数据位、校验位、停止位组成。这样通信双方就可以利用起始位和停止位实现同步。关于字符格式的相关参数的说明可以参考STM32中文参考手册第26.3.1章节。</p>
+<p><img src="/2024/07/17/Serial-communication/%E5%9B%BE%E7%89%871.png"></p>
+<p><img src="/2024/07/17/Serial-communication/%E5%9B%BE%E7%89%872.png"></p>
+<hr>
+<h3 id="通信速率"><a href="#通信速率" class="headerlink" title="通信速率"></a>通信速率</h3><p>在串口通信中，如果设置好了通信的字符格式，还需要通信双方约定好通信速率，也就是单位时间内传输的有效二进制数的个数，所以也被称为波特率（bps baud pre second）。一般串口通信常用的波特率为9600bps、38400bps、57600bps、115200bps。当然也有其他的选择，波特率有对应的计算公式，可以参考STM32中文参考手册的第26.3.4章节。</p>
+<p><img src="/2024/07/17/Serial-communication/%E5%9B%BE%E7%89%873.png"></p>
+<p>举个例子：大多数使用串口通信的传感器的字符格式都是8bit数据位、1bit停止位、无奇偶校验位，当然还必须有1bit起始位，所以一帧数据是10bit，如果通信速率设置为9600bps，则单位时间内能传输的数据帧为9600&#x2F;10 &#x3D; 960帧。这是使用频率最高的一种通信速率！！</p>
+<hr>
+<h3 id="整体框架"><a href="#整体框架" class="headerlink" title="整体框架"></a>整体框架</h3><p>串口协议用于与其他模块之间的信息交互，包含接收模块和发送模块，信号传输线上根据波特率完成码元的接收与发送，因而接收模块主要完成并串转换，串并转换是接收和发送模块必备的基本功能，发送模块完成并串转换，接收模块完成串并转换。</p>
+<p><img src="/2024/07/17/Serial-communication/%E5%9B%BE%E7%89%875.png"></p>
+<p>以STM32F407ZET6和BLE-CC41-A蓝牙模块为例</p>
+<p><img src="/2024/07/17/Serial-communication/%E5%9B%BE%E7%89%874.png"></p>
+<hr>
+<blockquote>
+<p>参考文章<br>STM32中文参考手册</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>通信协议</category>
+      </categories>
+      <tags>
+        <tag>STM32</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Why do STM32 initialization peripherals need to turn on the clock first?</title>
     <url>/2024/07/04/Why-do-STM32-initialization-peripherals-need-to-turn-on-the-clock-first/</url>
     <content><![CDATA[<h2 id="为什么Stm32初始化外设都需要先打开时钟"><a href="#为什么Stm32初始化外设都需要先打开时钟" class="headerlink" title="为什么Stm32初始化外设都需要先打开时钟"></a><font color="#3CAA78">为什么Stm32初始化外设都需要先打开时钟</font></h2><h3 id="理由一"><a href="#理由一" class="headerlink" title="理由一"></a>理由一</h3><p>由于STM32属于低功耗的MCU，为了降低功耗，STM32的MCU在复位后会把绝大多数的外设时钟关闭，所以当用户需要使用到MCU内部的某个外设，就必须先开启定时器。</p>
