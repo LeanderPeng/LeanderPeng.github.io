@@ -1,6 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>IIC protocol</title>
+    <url>/2024/07/17/IIC-protocol/</url>
+    <content><![CDATA[<h1 id="IIC协议"><a href="#IIC协议" class="headerlink" title="IIC协议"></a><font color="#3CAA78">IIC协议</font></h1><h2 id="IIC简介"><a href="#IIC简介" class="headerlink" title="IIC简介"></a>IIC简介</h2><p>I2C(IIC,Inter－Integrated Circuit)总线是由Philips公司开发的是一种<strong>简单的、半双工同步</strong>通信的串行通信接口。它只需要两根线即可在连接于总线上的器件之间传送信息。</p>
+<span id="more"></span>
+
+<h2 id="IIC-主要特性"><a href="#IIC-主要特性" class="headerlink" title="IIC 主要特性"></a>IIC 主要特性</h2><ul>
+<li>并行总线&#x2F;I2C 协议转换器</li>
+<li>多主模式功能：同一接口既可用作主模式也可用作从模式</li>
+<li>IIC 主模式特性：<ul>
+<li>时钟生成</li>
+<li>起始位和停止位生成</li>
+</ul>
+</li>
+<li>IIC从模式特性：<ul>
+<li>可编程 I2C 地址检测</li>
+<li>双寻址模式，可对 2 个从地址应答</li>
+<li>停止位检测</li>
+</ul>
+</li>
+<li>7 位&#x2F;10 位寻址以及广播呼叫的生成和检测</li>
+<li><strong>支持不同的通信速度</strong>：<ul>
+<li>标准速度（高达 100 kHz）</li>
+<li>快速速度（高达 400 kHz）</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="引脚定义"><a href="#引脚定义" class="headerlink" title="引脚定义"></a>引脚定义</h2><p>IIC总线只需要两根引脚就可以实现通信，一根是数据线（SDA Serial Data），另一根是时钟线（SCL Serial Clock），所有通过IIC接口通信的外围器件都挂载在IIC总线上，通过这种机制就可以实现多机通信。</p>
+<p><img src="/2024/07/17/IIC-protocol/%E5%9B%BE%E7%89%871.png"></p>
+<p>可以看到，外围器件的时钟线和数据线都是挂载在IIC总线（由主控芯片提供），并且在空闲状态下所有器件的时钟线（SCL）和数据线（SDA）都被总线的上拉电阻拉高，这样就可以把SDA引脚和SCL引脚设置为<strong>开漏模式</strong>即可，可以防止短路，也能节约功耗。</p>
+<hr>
+<h2 id="通信流程"><a href="#通信流程" class="headerlink" title="通信流程"></a>通信流程</h2><p>在主模式下，I2C 接口会启动数据传输并生成时钟信号。串行数据传输始终是在出现起始位时开始，在出现停止位时结束。起始位和停止位均在主模式下由软件生成。</p>
+<p>在从模式下，该接口能够识别其自身地址（7 或 10 位）以及广播呼叫地址。广播呼叫地址检测可由软件使能或禁止。</p>
+<p>数据和地址均以 8 位字节传输，MSB 在前。起始位后紧随地址字节（7 位地址占据一个字节；10 位地址占据两个字节）。<strong>地址始终在主模式下传送</strong>。</p>
+<p>在字节传输 8 个时钟周期后是第 9 个时钟脉冲，在此期间<strong>接收器必须向发送器发送一个应答位</strong>。</p>
+<p><img src="/2024/07/17/IIC-protocol/%E5%9B%BE%E7%89%872.png"></p>
+<ul>
+<li><strong>空闲状态</strong>：SDA引脚和SCL引脚空闲时均为高电平。</li>
+<li><strong>开始信号</strong>: 在SCL引脚保持高电平期间，SDA引脚的电平被拉低。</li>
+<li><strong>数据传输</strong>：<ul>
+<li>主机发送开始信号后，需要发送从器件的地址(1byte &#x3D; 7bit+1bit),遵循MSB高位先出</li>
+<li>在脉冲信号的低电平期间，数据线SDA的电平是正在修改的，此时不允许收发</li>
+<li>在脉冲信号的高电平期间，数据线SDA的电平是保持锁存的，此时允许收发</li>
+</ul>
+</li>
+<li><strong>应答信号</strong>：在第九个脉冲信号的高电平期间接收方才可以应答，SDA&#x3D;0 表示应答 SDA&#x3D;1 表示未应答。</li>
+<li><strong>停止信号</strong>：在SCL引脚保持高电平期间，把SDA引脚的电平拉高。</li>
+</ul>
+<p><strong>主器件和从器件建立联系的顺序：</strong></p>
+<ul>
+<li>主器件发送开始信号</li>
+<li>主器件向从器件发送器件地址</li>
+<li>主器件等待识别到其自身地址的器件应答</li>
+</ul>
+<hr>
+<h2 id="模拟IIC时序"><a href="#模拟IIC时序" class="headerlink" title="模拟IIC时序"></a>模拟IIC时序</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">// SCL  --  PB8  输出模式</span></span><br><span class="line"><span class="comment">// SDA  --  PB9  输出模式/输入模式</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span>  SDA_SET(n)  (n) ? GPIO_SetBits(GPIOB,GPIO_Pin_9) : GPIO_ResetBits(GPIOB,GPIO_Pin_9) </span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span>  SCL_SET(n)  (n) ? GPIO_SetBits(GPIOB,GPIO_Pin_8) : GPIO_ResetBits(GPIOB,GPIO_Pin_8) </span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span>  SDA_READ    GPIO_ReadInputDataBit(GPIOB,GPIO_Pin_9)</span></span><br></pre></td></tr></table></figure>
+
+
+<p>IIC初始化</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">IIC_Config</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">//1.设置SDA和SCL为输出模式</span></span><br><span class="line">	IIC_SCLConfig();</span><br><span class="line">	IIC_SDAConfig(GPIO_Mode_OUT);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//2.确保SDA和SCL处于空闲状态</span></span><br><span class="line">	SDA_SET(<span class="number">1</span>);</span><br><span class="line">	SCL_SET(<span class="number">1</span>);</span><br><span class="line">	delay_us(<span class="number">5</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>IIC开始信号</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">IIC_Start</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">//1.设置SDA引脚为输出模式</span></span><br><span class="line">	IIC_SDAConfig(GPIO_Mode_OUT);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//2.确保SDA和SCL处于空闲状态</span></span><br><span class="line">	SDA_SET(<span class="number">1</span>);</span><br><span class="line">	SCL_SET(<span class="number">1</span>);</span><br><span class="line">	delay_us(<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//3.把SDA引脚电平拉低</span></span><br><span class="line">	SDA_SET(<span class="number">0</span>);</span><br><span class="line">	delay_us(<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//4.把SCL引脚电平拉低，此时准备数据</span></span><br><span class="line">	SCL_SET(<span class="number">0</span>);</span><br><span class="line">	<span class="comment">//delay_us(5);</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>IIC发送字节</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">IIC_SendByte</span><span class="params">(<span class="type">uint8_t</span> Byte)</span>   </span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">uint8_t</span> i = <span class="number">0</span>;</span><br><span class="line">	<span class="comment">//1.设置SDA引脚为输出模式</span></span><br><span class="line">	IIC_SDAConfig(GPIO_Mode_OUT);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//2.把SCL引脚电平拉低，此时主机准备数据</span></span><br><span class="line">	SCL_SET(<span class="number">0</span>);</span><br><span class="line">	delay_us(<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//3.循环发送8bit，遵循MSB高位先出</span></span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">7</span>;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//4.判断待发送的字节的最高位</span></span><br><span class="line">		<span class="keyword">if</span>( Byte &amp; (i&lt;&lt;i) )</span><br><span class="line">		&#123;</span><br><span class="line">			SDA_SET(<span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			SDA_SET(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">		delay_us(<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//5.把SCL电平拉高，此时从机读取bit</span></span><br><span class="line">		SCL_SET(<span class="number">1</span>);</span><br><span class="line">		delay_us(<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//6.把SCL引脚电平拉低，此时主机准备下一个bit</span></span><br><span class="line">		SCL_SET(<span class="number">0</span>);</span><br><span class="line">		delay_us(<span class="number">5</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>判断从机是否应答</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">bool</span>  <span class="title function_">IIC_IsSlaveACK</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">bool</span> ack;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//1.设置SDA引脚为输入模式</span></span><br><span class="line">	IIC_SDAConfig(GPIO_Mode_IN);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//2.把SCL引脚电平拉低，此时为第9个脉冲的低电平，从机准备bit</span></span><br><span class="line">	SCL_SET(<span class="number">0</span>);</span><br><span class="line">	delay_us(<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//3.把SCL引脚电平拉高，此时为第9个脉冲的高电平，主机读取状态</span></span><br><span class="line">	SCL_SET(<span class="number">1</span>);</span><br><span class="line">	delay_us(<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//4.主机读取状态  1 表示未应答  0  表示已应答</span></span><br><span class="line">	<span class="keyword">if</span>(SDA_READ)</span><br><span class="line">		ack = <span class="literal">false</span>;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		ack = <span class="literal">true</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//5.把SCL引脚电平拉低</span></span><br><span class="line">	SCL_SET(<span class="number">0</span>);</span><br><span class="line">	delay_us(<span class="number">5</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> ack;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>IIC读取字节</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">uint8_t</span> <span class="title function_">IIC_ReadByte</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">uint8_t</span> i = <span class="number">0</span>,data = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//1.设置SDA引脚为输入模式</span></span><br><span class="line">	IIC_SDAConfig(GPIO_Mode_IN);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//2.把SCL引脚电平拉低，此时从机准备数据</span></span><br><span class="line">	SCL_SET(<span class="number">0</span>);</span><br><span class="line">	delay_us(<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//3.循环读取8bit，遵循MSB高位先出</span></span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">8</span>; ++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//4.把SCL电平拉高，此时主机读取bit</span></span><br><span class="line">		SCL_SET(<span class="number">1</span>);</span><br><span class="line">		delay_us(<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//5.主机读取bit</span></span><br><span class="line">		data &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">		data |= SDA_READ;</span><br><span class="line">		<span class="comment">//delay_us(5);</span></span><br><span class="line"></span><br><span class="line">		<span class="comment">//6.把SCL引脚电平拉低，此时从机准备下一个bit数据</span></span><br><span class="line">		SCL_SET(<span class="number">0</span>);</span><br><span class="line">		delay_us(<span class="number">5</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//7.返回结果</span></span><br><span class="line">	<span class="keyword">return</span> data;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>接收器向  发送器发送一个应答位（ack&#x3D;1 表示不应答  ack&#x3D;0 表示应答）</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">IIC_MasterACK</span><span class="params">(<span class="type">uint8_t</span> ack)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">//1.设置SDA引脚为输出模式</span></span><br><span class="line">	IIC_SDAConfig(GPIO_Mode_OUT);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//2.把SCL引脚电平拉低，此时主机准备</span></span><br><span class="line">	SCL_SET(<span class="number">0</span>);</span><br><span class="line">	delay_us(<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//3.判断ack的状态，从而对SDA操作</span></span><br><span class="line">	<span class="keyword">if</span>(ack)</span><br><span class="line">		SDA_SET(<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		SDA_SET(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">	delay_us(<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//4.把SCL电平拉高，此时从机读取bit</span></span><br><span class="line">	SCL_SET(<span class="number">1</span>);</span><br><span class="line">	delay_us(<span class="number">5</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//5.把SCL引脚电平拉低</span></span><br><span class="line">	SCL_SET(<span class="number">0</span>);</span><br><span class="line">	delay_us(<span class="number">5</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>IIC停止信号</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">IIC_Stop</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">//1.设置SDA引脚为输出模式</span></span><br><span class="line">	IIC_SDAConfig(GPIO_Mode_OUT);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//2.设置SDA和SCL均为低电平</span></span><br><span class="line">	SDA_SET(<span class="number">0</span>);</span><br><span class="line">	SCL_SET(<span class="number">0</span>);</span><br><span class="line">	delay_us(<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//3.把SCL电平拉高</span></span><br><span class="line">	SCL_SET(<span class="number">1</span>);</span><br><span class="line">	delay_us(<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//4.把SDA电平拉高</span></span><br><span class="line">	SDA_SET(<span class="number">1</span>);</span><br><span class="line">	delay_us(<span class="number">5</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<hr>
+<blockquote>
+<p>参考文章<br>STM32F4xx中文参考手册</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>通信协议</category>
+      </categories>
+      <tags>
+        <tag>STM32</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>SPI protocol</title>
     <url>/2024/07/17/SPI-protocol/</url>
     <content><![CDATA[<h1 id="SPI协议"><a href="#SPI协议" class="headerlink" title="SPI协议"></a><font color="#3CAA78">SPI协议</font></h1><h2 id="SPI简介"><a href="#SPI简介" class="headerlink" title="SPI简介"></a>SPI简介</h2><p>串行外设接口（Serial Peripheral Interface）的简称也叫做SPI，是一种<strong>高速的、全双工同步</strong>通信的一种接口，串行外设接口一般是需要4根线来进行通信（NSS、MISO、MOSI、SCK），但是如果打算实现单向通信（最少3根线），就可以利用这种机制实现一对多或者一对一的通信。</p>
@@ -22,6 +121,7 @@
 <p>CPOL&#x3D;0，表示处于空闲态时SCK时钟线处于低电平，所以有效状态就是SCK处于高电平时<br>CPOL&#x3D;1，表示处于空闲态时SCK时钟线处于高电平，所以有效状态就是SCK处于低电平时</p>
 <p>时钟相位(CPHA)定义数据的采集时间。</p>
 <p>CPHA&#x3D;0，在时钟的第一个跳变沿（上升沿或下降沿）进行数据锁存。<br>CPHA&#x3D;1，在时钟的第二个跳变沿（上升沿或下降沿）进行数据锁存。</p>
+<p>Mode0：CPOL&#x3D;0，CPHA&#x3D;0：此时空闲态时，SCK处于低电平，数据采样是在第1个边沿。<br>Mode1：CPOL&#x3D;0，CPHA&#x3D;1：此时空闲态时，SCK处于低电平，数据发送是在第1个边沿。<br>Mode2：CPOL&#x3D;1，CPHA&#x3D;0：此时空闲态时，SCK处于高电平，数据采集是在第1个边沿。<br>Mode3：CPOL&#x3D;1，CPHA&#x3D;1：此时空闲态时，SCK处于高电平，数据发送是在第1个边沿。</p>
 <p><img src="/2024/07/17/SPI-protocol/%E5%9B%BE%E7%89%874.png"></p>
 <hr>
 <h2 id="模拟SPI时序"><a href="#模拟SPI时序" class="headerlink" title="模拟SPI时序"></a>模拟SPI时序</h2><p>以 STM32F407ZET6 和 W25Q128 闪存芯片为例，利用IO口模拟SPI时序实现对存储IC进行读取操作</p>
